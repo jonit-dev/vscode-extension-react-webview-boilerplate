@@ -1,0 +1,24 @@
+:root {
+  --vscode-settings-checkboxBackground: #3c3c3c;
+  --vscode-settings-checkboxForeground: #ffffff;
+  --vscode-settings-checkboxBorder: #3c3c3c;
+  --vscode-checkbox-background: #3c3c3c;
+  --vscode-checkbox-foreground: #ffffff;
+  --vscode-checkbox-border: #3c3c3c;
+  --vscode-input-background: #3c3c3c;
+  --vscode-input-foreground: #ffffff;
+  --vscode-input-border: #3c3c3c;
+}
+
+vscode-checkbox {
+  display: block;
+  margin: 8px 0;
+  color: var(--vscode-foreground);
+  background-color: var(--vscode-checkbox-background);
+  border: 1px solid var(--vscode-checkbox-border);
+
+  &[checked] {
+    background-color: var(--vscode-settings-checkboxBackground);
+    color: var(--vscode-settings-checkboxForeground);
+  }
+}

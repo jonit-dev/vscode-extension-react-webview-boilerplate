@@ -1,6 +1,7 @@
 const esbuild = require('esbuild');
 const fs = require('fs');
 const path = require('path');
+const sass = require('sass');
 
 const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
@@ -60,6 +61,17 @@ async function copyDir(src, dest) {
   }
 }
 
+// Compile SCSS to CSS
+async function compileSass() {
+  const result = sass.compile('src/webview/styles/scss/main.scss', {
+    style: production ? 'compressed' : 'expanded',
+    sourceMap: !production,
+  });
+
+  await fs.promises.mkdir('dist/styles', { recursive: true });
+  await fs.promises.writeFile('dist/styles/main.css', result.css);
+}
+
 async function build() {
   try {
     if (watch) {
@@ -69,16 +81,25 @@ async function build() {
         plugins: [{
           name: 'reload-plugin',
           setup(build) {
+            // Watch SCSS files
+            build.onStart(async () => {
+              try {
+                await compileSass(); 
+              } catch (err) {
+                console.error('SCSS compilation failed:', err);
+              }
+            });
+
             build.onEnd(result => {
               if (result.errors.length) {
                 console.error('Build failed:', result.errors);
-              } 
+              }
             });
           },
         }],
       });
 
-      // Copy static files
+      // Copy static files and compile SCSS
       await Promise.all([
         // Copy index.html
         esbuild.build({
@@ -86,12 +107,8 @@ async function build() {
           loader: { '.html': 'copy' },
           outdir: 'dist',
         }),
-        // Copy styles
-        esbuild.build({
-          entryPoints: ['src/webview/styles/vscode-dev.css'],
-          loader: { '.css': 'copy' },
-          outdir: 'dist/styles',
-        }),
+        // Initial SCSS compilation
+        compileSass(),
         // Copy VSCode Elements bundle
         copyDir(
           'node_modules/@vscode-elements/elements/dist',
@@ -118,6 +135,9 @@ async function build() {
         loader: { '.html': 'copy' },
         outdir: 'dist',
       });
+      
+      // Compile SCSS for production
+      await compileSass();
       
       console.log('Webview built successfully');
     }

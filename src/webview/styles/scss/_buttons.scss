@@ -1,0 +1,26 @@
+:root {
+  --vscode-button-background: #0e639c;
+  --vscode-button-foreground: #ffffff;
+  --vscode-button-hoverBackground: #1177bb;
+  --vscode-button-secondaryBackground: #3a3d41;
+  --vscode-button-secondaryForeground: #ffffff;
+  --vscode-button-secondaryHoverBackground: #45494e;
+}
+
+vscode-button {
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+
+  &:hover {
+    background-color: var(--vscode-button-hoverBackground);
+  }
+
+  &[appearance="secondary"] {
+    background-color: var(--vscode-button-secondaryBackground);
+    color: var(--vscode-button-secondaryForeground);
+
+    &:hover {
+      background-color: var(--vscode-button-secondaryHoverBackground);
+    }
+  }
+}

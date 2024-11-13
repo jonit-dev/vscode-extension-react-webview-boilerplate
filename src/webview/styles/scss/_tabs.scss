@@ -1,0 +1,74 @@
+:root {
+  --vscode-panel-background: #1e1e1e;
+  --vscode-settings-headerBorder: #3c3c3c;
+  --vscode-tab-activeBackground: #1e1e1e;
+  --vscode-tab-inactiveBackground: #2d2d2d;
+  --vscode-tab-activeForeground: #ffffff;
+  --vscode-tab-inactiveForeground: #969696;
+  --vscode-tab-border: #3c3c3c;
+  --vscode-panel-border: #3c3c3c;
+  --vscode-tab-activeBorder: #007acc;
+}
+
+vscode-tabs {
+  display: block;
+  margin: 8px 0;
+
+  &[panel] {
+    border: 1px solid var(--vscode-panel-border);
+  }
+
+  [slot="addons"] {
+    color: var(--vscode-tab-inactiveForeground);
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 0 4px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+vscode-tab-header {
+  background-color: var(--vscode-tab-inactiveBackground);
+  color: var(--vscode-tab-inactiveForeground);
+  padding: 4px 10px;
+  cursor: pointer;
+  position: relative;
+
+  vscode-tabs:not([panel]) & {
+    border: none;
+    border-bottom: 2px solid transparent;
+
+    &[aria-selected="true"] {
+      background-color: var(--vscode-tab-activeBackground);
+      color: var(--vscode-tab-activeForeground);
+      border-bottom: 2px solid var(--vscode-tab-activeBorder);
+    }
+  }
+
+  vscode-tabs[panel] & {
+    padding: 2px 8px;
+    border: none;
+
+    &[aria-selected="true"] {
+      background-color: var(--vscode-tab-activeBackground);
+      color: var(--vscode-tab-activeForeground);
+      border-bottom: 2px solid var(--vscode-tab-activeBorder);
+    }
+  }
+}
+
+vscode-tab-panel {
+  padding: 16px;
+  background-color: var(--vscode-panel-background);
+
+  vscode-tabs[panel] & {
+    padding: 8px;
+  }
+}
+
+.panel-example {
+  margin-top: 20px;
+}
