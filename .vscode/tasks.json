@@ -10,9 +10,10 @@
         "isDefault": true
       },
       "presentation": {
-        "reveal": "always",
-        "panel": "new"
+        "reveal": "silent",
+        "panel": "shared"
       },
+      "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",
         "fileLocation": ["relative", "${workspaceFolder}"],
@@ -27,7 +28,7 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*building.*",
-          "endsPattern": "^.*successfully.*"
+          "endsPattern": "^.*Extension built successfully.*"
         }
       }
     }

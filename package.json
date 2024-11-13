@@ -54,13 +54,15 @@
     }
   },
   "scripts": {
-    "dev": "node esbuild.js",
-    "build:extension": "node esbuild.js",
-    "watch:extension": "node esbuild.js --watch",
-    "vscode:prepublish": "yarn run package",
+    "dev": "node esbuild.js --watch",
+    "build:extension": "node esbuild.js --extension-only",
+    "watch:extension": "node esbuild.js --watch --extension-only",
+    "build:webview": "node esbuild.js",
+    "watch:webview": "node esbuild.js --watch",
+    "vscode:prepublish": "node esbuild.js --production",
     "compile": "yarn run check-types && yarn run lint && node esbuild.js",
     "watch": "node esbuild.js --watch",
-    "package": "yarn run check-types && yarn run lint && node esbuild.js --production",
+    "package": "yarn run compile",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
@@ -86,5 +88,6 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "license": "MIT"
 }

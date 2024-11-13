@@ -1,8 +1,12 @@
 import * as vscode from 'vscode';
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+const DEV_SERVER = 'http://localhost:3000';
+
 export function activate(context: vscode.ExtensionContext) {
   console.log('Attempting to activate extension...');
   console.log('Extension URI:', context.extensionUri.toString());
+  console.log('Development mode:', isDevelopment);
 
   // Register Webview View Provider
   const provider = new ReactWebviewViewProvider(context.extensionUri);
@@ -48,31 +52,55 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
     console.log('Resolving WebviewView');
     webviewView.webview.options = {
       enableScripts: true,
-      localResourceRoots: [
-        vscode.Uri.joinPath(this._extensionUri, 'dist'),
-        vscode.Uri.joinPath(this._extensionUri, 'src/webview'),
-      ],
+      localResourceRoots: isDevelopment 
+        ? [vscode.Uri.parse(DEV_SERVER)]
+        : [
+            vscode.Uri.joinPath(this._extensionUri, 'dist'),
+            vscode.Uri.joinPath(this._extensionUri, 'src/webview'),
+          ],
     };
 
-    webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
+    // Add CSP for development server
+    const csp = isDevelopment
+      ? `default-src 'none';
+         img-src ${webviewView.webview.cspSource} https:;
+         script-src ${DEV_SERVER} 'unsafe-inline' 'unsafe-eval';
+         style-src ${webviewView.webview.cspSource} 'unsafe-inline';
+         connect-src ${DEV_SERVER} ws: wss:;`
+      : `default-src 'none';
+         img-src ${webviewView.webview.cspSource} https:;
+         script-src ${webviewView.webview.cspSource};
+         style-src ${webviewView.webview.cspSource};`;
+
+    webviewView.webview.html = this._getHtmlForWebview(webviewView.webview, csp);
     console.log('WebviewView resolved');
   }
 
-  private _getHtmlForWebview(webview: vscode.Webview) {
-    const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
-    );
+  private _getHtmlForWebview(webview: vscode.Webview, csp: string) {
+    // In development, use the dev server URL
+    const scriptSrc = isDevelopment
+      ? `${DEV_SERVER}/dist/webview.js`
+      : webview.asWebviewUri(
+          vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
+        );
 
     return `<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="Content-Security-Policy" content="${csp}">
                 <title>React Webview</title>
+                ${isDevelopment ? `
+                <script>
+                  const eventSource = new EventSource('${DEV_SERVER}/esbuild');
+                  eventSource.addEventListener('change', () => location.reload());
+                </script>
+                ` : ''}
             </head>
             <body>
                 <div id="root"></div>
-                <script src="${scriptUri}"></script>
+                <script src="${scriptSrc}"></script>
             </body>
             </html>`;
   }
@@ -133,10 +161,12 @@ class ReactPanel {
       column || vscode.ViewColumn.One,
       {
         enableScripts: true,
-        localResourceRoots: [
-          vscode.Uri.joinPath(extensionUri, 'dist'),
-          vscode.Uri.joinPath(extensionUri, 'src/webview'),
-        ],
+        localResourceRoots: isDevelopment 
+          ? [vscode.Uri.parse(DEV_SERVER)]
+          : [
+              vscode.Uri.joinPath(extensionUri, 'dist'),
+              vscode.Uri.joinPath(extensionUri, 'src/webview'),
+            ],
       }
     );
 
@@ -147,24 +177,47 @@ class ReactPanel {
   private _update() {
     const webview = this._panel.webview;
     this._panel.title = 'React Webview';
-    this._panel.webview.html = this._getHtmlForWebview(webview);
+
+    // Add CSP for development server
+    const csp = isDevelopment
+      ? `default-src 'none';
+         img-src ${webview.cspSource} https:;
+         script-src ${DEV_SERVER} 'unsafe-inline' 'unsafe-eval';
+         style-src ${webview.cspSource} 'unsafe-inline';
+         connect-src ${DEV_SERVER} ws: wss:;`
+      : `default-src 'none';
+         img-src ${webview.cspSource} https:;
+         script-src ${webview.cspSource};
+         style-src ${webview.cspSource};`;
+
+    this._panel.webview.html = this._getHtmlForWebview(webview, csp);
   }
 
-  private _getHtmlForWebview(webview: vscode.Webview) {
-    const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
-    );
+  private _getHtmlForWebview(webview: vscode.Webview, csp: string) {
+    // In development, use the dev server URL
+    const scriptSrc = isDevelopment
+      ? `${DEV_SERVER}/dist/webview.js`
+      : webview.asWebviewUri(
+          vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
+        );
 
     return `<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="Content-Security-Policy" content="${csp}">
                 <title>React Webview</title>
+                ${isDevelopment ? `
+                <script>
+                  const eventSource = new EventSource('${DEV_SERVER}/esbuild');
+                  eventSource.addEventListener('change', () => location.reload());
+                </script>
+                ` : ''}
             </head>
             <body>
                 <div id="root"></div>
-                <script src="${scriptUri}"></script>
+                <script src="${scriptSrc}"></script>
             </body>
             </html>`;
   }
