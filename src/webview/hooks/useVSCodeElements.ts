@@ -43,6 +43,10 @@ export const useVSCodeElements = () => {
       if (!customElements.get('vscode-multi-select')) {
         await import('@vscode-elements/elements/dist/vscode-multi-select');
       }
+      if (!customElements.get('vscode-single-select')) {
+        await import('@vscode-elements/elements/dist/vscode-single-select');
+        await import('@vscode-elements/elements/dist/vscode-option');
+      }
       if (!customElements.get('vscode-progress-ring')) {
         await import('@vscode-elements/elements/dist/vscode-progress-ring');
       }

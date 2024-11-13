@@ -11,6 +11,7 @@ import { MultiSelectDemo } from './components/demos/MultiSelectDemo';
 import { ProgressRingDemo } from './components/demos/ProgressRingDemo';
 import { RadioDemo } from './components/demos/RadioDemo';
 import { ScrollableDemo } from './components/demos/ScrollableDemo';
+import { SelectDemo } from './components/demos/SelectDemo';
 import { TabsDemo } from './components/demos/TabsDemo';
 import { TabHeader, TabPanel, Tabs } from './components/vscode-elements/Tabs';
 import { useVSCodeElements } from './hooks/useVSCodeElements';
@@ -81,6 +82,11 @@ const App: React.FC = () => {
         <TabHeader>Scrollable</TabHeader>
         <TabPanel>
           <ScrollableDemo />
+        </TabPanel>
+
+        <TabHeader>SingleSelect</TabHeader>
+        <TabPanel>
+          <SelectDemo />
         </TabPanel>
 
         <TabHeader>Tabs</TabHeader>
