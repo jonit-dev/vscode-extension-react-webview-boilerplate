@@ -1,24 +1,27 @@
 :root {
-  --vscode-settings-checkboxBackground: #3c3c3c;
-  --vscode-settings-checkboxForeground: #ffffff;
-  --vscode-settings-checkboxBorder: #3c3c3c;
+  --vscode-settings-checkboxBackground: transparent;
+  --vscode-settings-checkboxForeground: #cccccc;
+  --vscode-settings-checkboxBorder: #cccccc;
   --vscode-checkbox-background: transparent;
   --vscode-checkbox-foreground: #cccccc;
   --vscode-checkbox-border: #cccccc;
 }
 
 vscode-checkbox {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   color: var(--vscode-checkbox-foreground);
-  background: var(--vscode-checkbox-background);
   font-family: var(--vscode-font-family);
   cursor: pointer;
   gap: 6px;
+  width: 100%;
+  margin: 4px 0;
+  background: none;
 
   &[checked] {
     color: var(--vscode-checkbox-foreground);
   }
+
 
   &[disabled] {
     opacity: 0.5;
@@ -28,14 +31,26 @@ vscode-checkbox {
 
 vscode-checkbox-group {
   display: flex;
-  gap: 8px;
+  width: 100%;
 
   &[variant="vertical"] {
     flex-direction: column;
+    gap: 4px;
+
+    vscode-checkbox {
+      margin: 0;
+    }
   }
 
   &[variant="horizontal"] {
     flex-direction: row;
     align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    vscode-checkbox {
+      width: auto;
+      margin: 0;
+    }
   }
 }
