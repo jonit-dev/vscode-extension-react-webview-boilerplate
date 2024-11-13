@@ -1,8 +1,8 @@
 :root {
-  --vscode-settings-checkboxBackground: transparent;
+  --vscode-settings-checkboxBackground: #3c3c3c;
   --vscode-settings-checkboxForeground: #cccccc;
   --vscode-settings-checkboxBorder: #cccccc;
-  --vscode-checkbox-background: transparent;
+  --vscode-checkbox-background: #3c3c3c;
   --vscode-checkbox-foreground: #cccccc;
   --vscode-checkbox-border: #cccccc;
 }
@@ -16,7 +16,6 @@ vscode-checkbox {
   gap: 6px;
   width: 100%;
   margin: 4px 0;
-  background: none;
 
   &[checked] {
     color: var(--vscode-checkbox-foreground);
