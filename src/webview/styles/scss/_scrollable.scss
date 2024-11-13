@@ -1,0 +1,35 @@
+vscode-scrollable {
+  display: block;
+  overflow: hidden;
+  position: relative;
+
+  &[orientation="vertical"] {
+    overflow-y: auto;
+  }
+
+  &[orientation="horizontal"] {
+    overflow-x: auto;
+  }
+
+  &[orientation="both"] {
+    overflow: auto;
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--vscode-scrollbarSlider-background);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--vscode-scrollbarSlider-hoverBackground);
+    border-radius: 5px;
+
+    &:hover {
+      background: var(--vscode-scrollbarSlider-activeBackground);
+    }
+  }
+}

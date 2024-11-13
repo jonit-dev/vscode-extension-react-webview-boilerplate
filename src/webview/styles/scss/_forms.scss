@@ -1,0 +1,61 @@
+vscode-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--vscode-editor-background);
+  border: 1px solid var(--vscode-widget-border);
+  border-radius: 2px;
+
+  &[title] {
+    &::before {
+      content: attr(title);
+      display: block;
+      font-size: var(--vscode-font-size);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+  }
+
+  &[description] {
+    &::after {
+      content: attr(description);
+      display: block;
+      font-size: var(--vscode-font-size);
+      color: var(--vscode-descriptionForeground);
+      margin-top: -8px;
+    }
+  }
+}
+
+vscode-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  &[horizontal] {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+vscode-form-helper {
+  display: block;
+  font-size: var(--vscode-font-size);
+  color: var(--vscode-descriptionForeground);
+  margin-top: 4px;
+
+  &[severity="error"] {
+    color: var(--vscode-errorForeground);
+  }
+
+  &[severity="warning"] {
+    color: var(--vscode-warningForeground);
+  }
+
+  &[severity="info"] {
+    color: var(--vscode-infoForeground);
+  }
+}

@@ -1,0 +1,48 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+vscode-progress-ring {
+  display: inline-flex;
+  position: relative;
+  width: var(--size, 16px);
+  height: var(--size, 16px);
+
+  &::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--vscode-progressBar-background);
+  }
+
+  &::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--vscode-progressBar-foreground);
+    animation: spin 0.6s linear infinite;
+  }
+
+  &[indeterminate="false"] {
+    &::after {
+      animation: none;
+      transform: rotate(calc(var(--value, 0) * 3.6deg));
+      border-right-color: var(--vscode-progressBar-foreground);
+      border-bottom-color: var(--vscode-progressBar-foreground);
+      transition: transform 0.1s linear;
+    }
+  }
+}

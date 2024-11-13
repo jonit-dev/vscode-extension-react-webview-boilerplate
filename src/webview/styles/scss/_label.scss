@@ -1,0 +1,13 @@
+vscode-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--vscode-foreground);
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+
+  .required-indicator {
+    color: var(--vscode-errorForeground);
+    margin-left: 2px;
+  }
+}
