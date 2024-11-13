@@ -17,6 +17,14 @@ export const useVSCodeElements = () => {
         await import('@vscode-elements/elements/dist/vscode-collapsible');
         await import('@vscode-elements/elements/dist/vscode-icon');
       }
+      if (!customElements.get('vscode-tabs')) {
+        await import('@vscode-elements/elements/dist/vscode-tabs');
+        await import('@vscode-elements/elements/dist/vscode-tab-header');
+        await import('@vscode-elements/elements/dist/vscode-tab-panel');
+      }
+      if (!customElements.get('vscode-scrollable')) {
+        await import('@vscode-elements/elements/dist/vscode-scrollable');
+      }
     };
 
     importElements();

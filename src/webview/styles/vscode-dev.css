@@ -31,6 +31,17 @@
   --vscode-collapsible-icon-foreground: #848484;
   --vscode-collapsible-expanded-background: #2d2d2d;
 
+  /* Tabs styles */
+  --vscode-panel-background: #1e1e1e;
+  --vscode-settings-headerBorder: #3c3c3c;
+  --vscode-tab-activeBackground: #1e1e1e;
+  --vscode-tab-inactiveBackground: #2d2d2d;
+  --vscode-tab-activeForeground: #ffffff;
+  --vscode-tab-inactiveForeground: #969696;
+  --vscode-tab-border: #3c3c3c;
+  --vscode-panel-border: #3c3c3c;
+  --vscode-tab-activeBorder: #007acc;
+
   /* Default colors */
   --vscode-foreground: #ffffff;
   --vscode-disabledForeground: #848484;
@@ -90,6 +101,59 @@ vscode-collapsible [slot="decorations"] {
   margin-left: 4px;
 }
 
+/* Tabs styles */
+vscode-tabs {
+  display: block;
+  margin: 8px 0;
+}
+
+vscode-tabs[panel] {
+  border: 1px solid var(--vscode-panel-border);
+}
+
+vscode-tab-header {
+  background-color: var(--vscode-tab-inactiveBackground);
+  color: var(--vscode-tab-inactiveForeground);
+  padding: 4px 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+vscode-tabs:not([panel]) vscode-tab-header {
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+
+vscode-tabs:not([panel]) vscode-tab-header[aria-selected="true"] {
+  background-color: var(--vscode-tab-activeBackground);
+  color: var(--vscode-tab-activeForeground);
+  border-bottom: 2px solid var(--vscode-tab-activeBorder);
+}
+
+vscode-tabs[panel] vscode-tab-header {
+  padding: 2px 8px;
+  border: none;
+}
+
+vscode-tabs[panel] vscode-tab-header[aria-selected="true"] {
+  background-color: var(--vscode-tab-activeBackground);
+  color: var(--vscode-tab-activeForeground);
+  border-bottom: 2px solid var(--vscode-tab-activeBorder);
+}
+
+vscode-tab-panel {
+  padding: 16px;
+  background-color: var(--vscode-panel-background);
+}
+
+vscode-tabs[panel] vscode-tab-panel {
+  padding: 8px;
+}
+
+.panel-example {
+  margin-top: 20px;
+}
+
 /* Custom collapsible examples */
 .collapsible.css-part-example {
   max-height: 300px;
@@ -98,4 +162,16 @@ vscode-collapsible [slot="decorations"] {
 
 .collapsible.complex-example vscode-scrollable {
   max-height: 400px;
+}
+
+/* Icon styles in tabs */
+vscode-tabs [slot="addons"] {
+  color: var(--vscode-tab-inactiveForeground);
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 0 4px;
+}
+
+vscode-tabs [slot="addons"]:hover {
+  opacity: 1;
 }

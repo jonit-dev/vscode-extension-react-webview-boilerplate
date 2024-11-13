@@ -8,6 +8,9 @@ declare global {
       'vscode-collapsible': any;
       'vscode-icon': any;
       'vscode-scrollable': any;
+      'vscode-tabs': any;
+      'vscode-tab-header': any;
+      'vscode-tab-panel': any;
     }
   }
 }

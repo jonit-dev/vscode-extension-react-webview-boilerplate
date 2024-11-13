@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TabsDemo } from './components/demos/TabsDemo';
 import { Badge } from './components/vscode-elements/Badge';
 import { Button } from './components/vscode-elements/Button';
 import { Checkbox } from './components/vscode-elements/Checkbox';
@@ -74,6 +75,10 @@ const App: React.FC = () => {
             <p>Example with badge decoration</p>
           </Collapsible>
         </div>
+      </div>
+
+      <div style={{ marginTop: '40px' }}>
+        <TabsDemo />
       </div>
     </div>
   );
