@@ -42,6 +42,7 @@ export const useVSCodeElements = () => {
       }
       if (!customElements.get('vscode-multi-select')) {
         await import('@vscode-elements/elements/dist/vscode-multi-select');
+        await import('@vscode-elements/elements/dist/vscode-option');
       }
       if (!customElements.get('vscode-single-select')) {
         await import('@vscode-elements/elements/dist/vscode-single-select');
@@ -59,6 +60,10 @@ export const useVSCodeElements = () => {
       }
     };
 
-    importElements();
+    try {
+      importElements();
+    } catch (error) {
+      console.error('Failed to import VSCode elements:', error);
+    }
   }, []);
 };

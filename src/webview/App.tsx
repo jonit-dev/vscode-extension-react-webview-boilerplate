@@ -84,7 +84,7 @@ const App: React.FC = () => {
           <ScrollableDemo />
         </TabPanel>
 
-        <TabHeader>SingleSelect</TabHeader>
+        <TabHeader>Selects</TabHeader>
         <TabPanel>
           <SelectDemo />
         </TabPanel>

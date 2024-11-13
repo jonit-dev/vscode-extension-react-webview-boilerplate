@@ -1,129 +1,28 @@
-vscode-single-select,
-vscode-multi-select {
-  --dropdown-z-index: 2;
-  display: inline-flex;
-  flex-direction: column;
-  min-width: 200px;
-  background: var(--vscode-settings-dropdownBackground);
-  border: 1px solid var(--vscode-settings-dropdownBorder);
-  color: var(--vscode-foreground);
-  font-family: var(--vscode-font-family);
-  font-size: var(--vscode-font-size);
-  font-weight: var(--vscode-font-weight);
-  cursor: pointer;
-  position: relative;
-  padding: 4px 6px;
-  box-sizing: border-box;
+vscode-single-select {
+  --vscode-select-background: var(--vscode-dropdown-background);
 
-  &::after {
-    content: '';
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid var(--vscode-foreground);
-    pointer-events: none;
-  }
-
-  &[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  &[invalid] {
-    border-color: var(--vscode-inputValidation-errorBorder);
-    outline: none;
-  }
-
-  &[focused] {
-    outline: 1px solid var(--vscode-focusBorder);
-    outline-offset: -1px;
-  }
-
-  &[combobox] {
-    input {
-      background: var(--vscode-settings-textInputBackground);
-      border: none;
-      color: var(--vscode-foreground);
-      font-family: var(--vscode-font-family);
-      font-size: var(--vscode-font-size);
-      padding: 0;
-      width: 100%;
-      outline: none;
-
-      &::placeholder {
-        color: var(--vscode-input-placeholderForeground);
-      }
-    }
-  }
-
-  .dropdown {
-    position: absolute;
-    left: -1px;
-    right: -1px;
-    background: var(--vscode-settings-dropdownBackground);
-    border: 1px solid var(--vscode-settings-dropdownListBorder);
-    z-index: var(--dropdown-z-index);
-    margin-top: 2px;
-    max-height: 300px;
-    overflow-y: auto;
-
-    &[position="above"] {
-      bottom: 100%;
-      margin-top: 0;
-      margin-bottom: 2px;
-    }
-
-    .options {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      background: var(--vscode-settings-dropdownBackground);
-    }
-
-    .option {
-      padding: 6px 8px;
-      cursor: pointer;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      background: transparent;
-      color: var(--vscode-foreground);
-
-      &:hover {
-        background: var(--vscode-list-hoverBackground);
-        color: var(--vscode-list-hoverForeground);
-      }
-
-      &.active {
-        background: var(--vscode-list-activeSelectionBackground);
-        color: var(--vscode-list-activeSelectionForeground);
-
-        &:hover {
-          background: var(--vscode-list-activeSelectionBackground);
-          color: var(--vscode-list-activeSelectionForeground);
-        }
-      }
-
-      &[disabled] {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-    }
-
-    .description {
-      display: block;
-      font-size: 0.9em;
-      opacity: 0.7;
-      margin-top: 2px;
-      padding: 0 8px 6px;
-      color: var(--vscode-foreground);
-    }
+  &::part(control) {
+    background-color: var(--vscode-dropdown-background);
   }
 }
 
 vscode-option {
-  display: none; // Hide the original options as they're rendered in the dropdown
+  --vscode-option-background: var(--vscode-dropdown-background);
+
+  &::part(base) {
+    background-color: var(--vscode-dropdown-background);
+  }
+
+  &:hover::part(base) {
+    background-color: var(--vscode-list-hoverBackground);
+  }
+
+  &[selected]::part(base) {
+    background-color: var(--vscode-list-activeSelectionBackground);
+    color: var(--vscode-list-activeSelectionForeground);
+  }
+}
+
+.select-popup {
+  background-color: var(--vscode-dropdown-background);
 }
