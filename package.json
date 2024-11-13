@@ -1,0 +1,89 @@
+{
+  "name": "vscode-extension-react-webview",
+  "displayName": "React Webview Demo",
+  "description": "VSCode Extension with React Webview",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "react-webview",
+          "title": "React Webview",
+          "icon": "$(react)"
+        }
+      ]
+    },
+    "views": {
+      "react-webview": [
+        {
+          "type": "webview",
+          "id": "react-webview.view",
+          "name": "React View",
+          "icon": "$(react)",
+          "contextualTitle": "React Webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vscode-extension-react-webview.openWebview",
+        "title": "Open React Webview",
+        "category": "React Webview",
+        "icon": "$(react)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "vscode-extension-react-webview.openWebview",
+          "when": "view == react-webview.view",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "dev": "esbuild src/webview/main.tsx --bundle --outfile=src/webview/dist/webview.js --servedir=src/webview --serve=3000",
+    "build:extension": "node esbuild.js",
+    "watch:extension": "node esbuild.js --watch",
+    "vscode:prepublish": "yarn run package",
+    "compile": "yarn run check-types && yarn run lint && node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "yarn run check-types && yarn run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/mocha": "^10.0.9",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.10.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "eslint": "^9.13.0",
+    "esbuild": "^0.24.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.6.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
