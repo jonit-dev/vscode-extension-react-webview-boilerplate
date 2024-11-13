@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FormGroup } from '../vscode-elements/FormGroup';
 import { FormHelper } from '../vscode-elements/FormHelper';
-import { MultiSelect, Option } from '../vscode-elements/MultiSelect';
+import { MultiSelect, MultiSelectOption } from '../vscode-elements/MultiSelect';
 
 export const MultiSelectDemo: React.FC = () => {
   const [selectedFruits, setSelectedFruits] = useState<string[]>([]);
@@ -17,10 +17,10 @@ export const MultiSelectDemo: React.FC = () => {
           onChange={setSelectedFruits}
           placeholder="Select fruits..."
         >
-          <Option value="apple">Apple</Option>
-          <Option value="banana">Banana</Option>
-          <Option value="orange">Orange</Option>
-          <Option value="grape">Grape</Option>
+          <MultiSelectOption value="apple">Apple</MultiSelectOption>
+          <MultiSelectOption value="banana">Banana</MultiSelectOption>
+          <MultiSelectOption value="orange">Orange</MultiSelectOption>
+          <MultiSelectOption value="grape">Grape</MultiSelectOption>
         </MultiSelect>
         <FormHelper>Basic multi-select example</FormHelper>
       </FormGroup>
@@ -32,10 +32,10 @@ export const MultiSelectDemo: React.FC = () => {
           onChange={setSelectedColors}
           placeholder="Select colors..."
         >
-          <Option value="red">Red</Option>
-          <Option value="blue">Blue</Option>
-          <Option value="green">Green</Option>
-          <Option value="yellow">Yellow</Option>
+          <MultiSelectOption value="red">Red</MultiSelectOption>
+          <MultiSelectOption value="blue">Blue</MultiSelectOption>
+          <MultiSelectOption value="green">Green</MultiSelectOption>
+          <MultiSelectOption value="yellow">Yellow</MultiSelectOption>
         </MultiSelect>
         <FormHelper>Pre-selected values: blue, red</FormHelper>
       </FormGroup>
@@ -48,9 +48,9 @@ export const MultiSelectDemo: React.FC = () => {
           onChange={() => { }}
           placeholder="Disabled multi-select..."
         >
-          <Option value="1">Option 1</Option>
-          <Option value="2">Option 2</Option>
-          <Option value="3">Option 3</Option>
+          <MultiSelectOption value="1">Option 1</MultiSelectOption>
+          <MultiSelectOption value="2">Option 2</MultiSelectOption>
+          <MultiSelectOption value="3">Option 3</MultiSelectOption>
         </MultiSelect>
         <FormHelper>Disabled multi-select example</FormHelper>
       </FormGroup>
@@ -62,10 +62,10 @@ export const MultiSelectDemo: React.FC = () => {
           onChange={() => { }}
           placeholder="Select options..."
         >
-          <Option value="1">Option 1</Option>
-          <Option value="2" disabled>Option 2 (Disabled)</Option>
-          <Option value="3">Option 3</Option>
-          <Option value="4" disabled>Option 4 (Disabled)</Option>
+          <MultiSelectOption value="1">Option 1</MultiSelectOption>
+          <MultiSelectOption value="2" disabled>Option 2 (Disabled)</MultiSelectOption>
+          <MultiSelectOption value="3">Option 3</MultiSelectOption>
+          <MultiSelectOption value="4" disabled>Option 4 (Disabled)</MultiSelectOption>
         </MultiSelect>
         <FormHelper>Some options are disabled</FormHelper>
       </FormGroup>

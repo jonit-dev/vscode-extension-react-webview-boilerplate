@@ -19,7 +19,6 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   return (
     <vscode-multi-select
       {...props}
-      value={value.join(',')}
       disabled={disabled}
       placeholder={placeholder}
       onChange={(event: CustomEvent) => {
@@ -38,7 +37,7 @@ interface OptionProps {
   disabled?: boolean;
 }
 
-export const Option: React.FC<OptionProps> = ({
+export const MultiSelectOption: React.FC<OptionProps> = ({
   children,
   value,
   disabled,
