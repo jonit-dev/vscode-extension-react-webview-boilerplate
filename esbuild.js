@@ -1,30 +1,16 @@
 const esbuild = require('esbuild');
 
-const watch = process.argv.includes('--watch');
 const production = process.argv.includes('--production');
-
-/** @type {import('esbuild').BuildOptions} */
-const extensionConfig = {
-  entryPoints: ['./src/extension.ts'],
-  bundle: true,
-  outfile: 'dist/extension.js',
-  external: ['vscode'],
-  format: 'cjs',
-  platform: 'node',
-  target: 'node16',
-  sourcemap: !production,
-  minify: production,
-};
 
 /** @type {import('esbuild').BuildOptions} */
 const webviewConfig = {
   entryPoints: ['./src/webview/main.tsx'],
   bundle: true,
-  outfile: 'dist/webview.js',
+  outfile: 'src/webview/dist/webview.js',
   format: 'iife',
   platform: 'browser',
   target: 'es2020',
-  sourcemap: !production,
+  sourcemap: true,
   minify: production,
   loader: {
     '.tsx': 'tsx',
@@ -37,23 +23,37 @@ const webviewConfig = {
   },
 };
 
+// Development server configuration
+const devServer = {
+  servedir: 'src/webview',
+  port: 3000,
+  host: 'localhost',
+};
+
 async function build() {
   try {
-    console.log('Building extension...');
-    const extensionResult = await esbuild.build(extensionConfig);
-    console.log('Extension build complete:', extensionResult);
+    const ctx = await esbuild.context({
+      ...webviewConfig,
+      plugins: [{
+        name: 'reload-plugin',
+        setup(build) {
+          
+          build.onEnd(result => {
+            if (result.errors.length) {
+              console.error('Build failed:', result.errors);
+            } 
+          });
+        },
+      }],
+    });
 
-    console.log('Building webview...');
-    const webviewResult = await esbuild.build(webviewConfig);
-    console.log('Webview build complete:', webviewResult);
+    // Start dev server and watch for changes
+    await ctx.serve(devServer);
+    console.log(`Development server running at http://${devServer.host}:${devServer.port}`);
+    
+    // Watch for changes
+    await ctx.watch();
 
-    if (watch) {
-      console.log('Watching for changes...');
-      const extensionCtx = await esbuild.context(extensionConfig);
-      const webviewCtx = await esbuild.context(webviewConfig);
-
-      await Promise.all([extensionCtx.watch(), webviewCtx.watch()]);
-    }
   } catch (err) {
     console.error('Build failed:', err);
     process.exit(1);

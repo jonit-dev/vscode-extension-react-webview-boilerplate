@@ -54,7 +54,7 @@
     }
   },
   "scripts": {
-    "dev": "esbuild src/webview/main.tsx --bundle --outfile=src/webview/dist/webview.js --servedir=src/webview --serve=3000",
+    "dev": "node esbuild.js",
     "build:extension": "node esbuild.js",
     "watch:extension": "node esbuild.js --watch",
     "vscode:prepublish": "yarn run package",
