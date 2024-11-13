@@ -114,6 +114,11 @@ async function build() {
           'node_modules/@vscode-elements/elements/dist',
           'dist/node_modules/@vscode-elements/elements/dist'
         ),
+        // Copy external styles
+        copyDir(
+          'src/webview/styles/external',
+          'dist/styles/external'
+        ),
       ]);
 
       // Start dev server and watch for changes
@@ -138,6 +143,12 @@ async function build() {
       
       // Compile SCSS for production
       await compileSass();
+
+      // Copy external styles for production
+      await copyDir(
+        'src/webview/styles/external',
+        'dist/styles/external'
+      );
       
       console.log('Webview built successfully');
     }

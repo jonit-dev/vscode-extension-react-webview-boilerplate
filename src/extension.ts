@@ -63,6 +63,14 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
     );
 
+    const stylesUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, 'dist', 'styles', 'main.css')
+    );
+
+    const codiconUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, 'dist', 'styles', 'external', 'codicon.css')
+    );
+
     const vscodeElementsUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, 'node_modules', '@vscode-elements', 'elements', 'dist', 'bundled.js')
     );
@@ -73,6 +81,8 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>React Webview</title>
+                <link href="${codiconUri}" rel="stylesheet">
+                <link href="${stylesUri}" rel="stylesheet">
                 <script src="${vscodeElementsUri}" type="module"></script>
             </head>
             <body>
@@ -160,6 +170,14 @@ class ReactPanel {
       vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
     );
 
+    const stylesUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, 'dist', 'styles', 'main.css')
+    );
+
+    const codiconUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, 'dist', 'styles', 'external', 'codicon.css')
+    );
+
     const vscodeElementsUri = webview.asWebviewUri(
       vscode.Uri.joinPath(this._extensionUri, 'node_modules', '@vscode-elements', 'elements', 'dist', 'bundled.js')
     );
@@ -170,6 +188,8 @@ class ReactPanel {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>React Webview</title>
+                <link href="${codiconUri}" rel="stylesheet">
+                <link href="${stylesUri}" rel="stylesheet">
                 <script src="${vscodeElementsUri}" type="module"></script>
             </head>
             <body>

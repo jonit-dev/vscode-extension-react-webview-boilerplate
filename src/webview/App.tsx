@@ -3,6 +3,7 @@ import { BadgeDemo } from './components/demos/BadgeDemo';
 import { ButtonDemo } from './components/demos/ButtonDemo';
 import { CheckboxDemo } from './components/demos/CheckboxDemo';
 import { CollapsibleDemo } from './components/demos/CollapsibleDemo';
+import { IconDemo } from './components/demos/IconDemo';
 import { TabsDemo } from './components/demos/TabsDemo';
 import { TabHeader, TabPanel, Tabs } from './components/vscode-elements/Tabs';
 import { useVSCodeElements } from './hooks/useVSCodeElements';
@@ -38,6 +39,11 @@ const App: React.FC = () => {
         <TabHeader>Tabs</TabHeader>
         <TabPanel>
           <TabsDemo />
+        </TabPanel>
+
+        <TabHeader>Icons</TabHeader>
+        <TabPanel>
+          <IconDemo />
         </TabPanel>
       </Tabs>
     </div>
