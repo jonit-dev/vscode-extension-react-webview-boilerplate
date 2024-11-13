@@ -29,15 +29,23 @@ const webviewConfig = {
   loader: {
     '.tsx': 'tsx',
     '.ts': 'tsx',
+    '.jsx': 'jsx',
+    '.js': 'jsx',
+  },
+  define: {
+    'process.env.NODE_ENV': production ? '"production"' : '"development"',
   },
 };
 
 async function build() {
   try {
-    // Build extension
-    await esbuild.build(extensionConfig);
-    // Build webview
-    await esbuild.build(webviewConfig);
+    console.log('Building extension...');
+    const extensionResult = await esbuild.build(extensionConfig);
+    console.log('Extension build complete:', extensionResult);
+
+    console.log('Building webview...');
+    const webviewResult = await esbuild.build(webviewConfig);
+    console.log('Webview build complete:', webviewResult);
 
     if (watch) {
       console.log('Watching for changes...');
@@ -47,7 +55,7 @@ async function build() {
       await Promise.all([extensionCtx.watch(), webviewCtx.watch()]);
     }
   } catch (err) {
-    console.error(err);
+    console.error('Build failed:', err);
     process.exit(1);
   }
 }

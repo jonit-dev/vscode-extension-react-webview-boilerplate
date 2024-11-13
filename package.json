@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "*"
+    "onStartupFinished",
+    "onCommand:vscode-extension-react-webview.openWebview"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -19,7 +20,7 @@
         {
           "id": "react-webview",
           "title": "React Webview",
-          "icon": "$(react)"
+          "icon": "$(extensions)"
         }
       ]
     },
@@ -29,7 +30,7 @@
           "type": "webview",
           "id": "react-webview.view",
           "name": "React View",
-          "icon": "$(react)",
+          "icon": "$(extensions)",
           "contextualTitle": "React Webview"
         }
       ]
@@ -39,7 +40,7 @@
         "command": "vscode-extension-react-webview.openWebview",
         "title": "Open React Webview",
         "category": "React Webview",
-        "icon": "$(react)"
+        "icon": "$(extensions)"
       }
     ],
     "menus": {

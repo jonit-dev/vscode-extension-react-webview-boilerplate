@@ -1,23 +1,40 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Extension "vscode-extension-react-webview" is now active!');
+  console.log('Attempting to activate extension...');
+  console.log('Extension URI:', context.extensionUri.toString());
 
   // Register Webview View Provider
   const provider = new ReactWebviewViewProvider(context.extensionUri);
-  context.subscriptions.push(
-    vscode.window.registerWebviewViewProvider('react-webview.view', provider)
-  );
+  console.log('Created WebviewViewProvider');
+
+  try {
+    context.subscriptions.push(
+      vscode.window.registerWebviewViewProvider('react-webview.view', provider)
+    );
+    console.log('Successfully registered WebviewViewProvider');
+  } catch (error) {
+    console.error('Failed to register WebviewViewProvider:', error);
+  }
 
   // Register Command
-  let disposable = vscode.commands.registerCommand(
-    'vscode-extension-react-webview.openWebview',
-    () => {
-      ReactPanel.createOrShow(context.extensionUri);
-    }
-  );
+  try {
+    let disposable = vscode.commands.registerCommand(
+      'vscode-extension-react-webview.openWebview',
+      () => {
+        console.log('Executing openWebview command');
+        ReactPanel.createOrShow(context.extensionUri);
+      }
+    );
+    context.subscriptions.push(disposable);
+    console.log('Successfully registered openWebview command');
+  } catch (error) {
+    console.error('Failed to register command:', error);
+  }
 
-  context.subscriptions.push(disposable);
+  console.log(
+    'Extension "vscode-extension-react-webview" activation complete!'
+  );
 }
 
 class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
@@ -28,6 +45,7 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
     context: vscode.WebviewViewResolveContext,
     _token: vscode.CancellationToken
   ) {
+    console.log('Resolving WebviewView');
     webviewView.webview.options = {
       enableScripts: true,
       localResourceRoots: [
@@ -37,6 +55,7 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
     };
 
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
+    console.log('WebviewView resolved');
   }
 
   private _getHtmlForWebview(webview: vscode.Webview) {
@@ -98,6 +117,7 @@ class ReactPanel {
   }
 
   public static createOrShow(extensionUri: vscode.Uri) {
+    console.log('Creating or showing ReactPanel');
     const column = vscode.window.activeTextEditor
       ? vscode.window.activeTextEditor.viewColumn
       : undefined;
@@ -121,6 +141,7 @@ class ReactPanel {
     );
 
     ReactPanel.currentPanel = new ReactPanel(panel, extensionUri);
+    console.log('ReactPanel created');
   }
 
   private _update() {
