@@ -1,19 +1,21 @@
 import React from 'react';
 
+type FormGroupVariant = 'horizontal' | 'vertical' | 'settings-group';
+
 interface FormGroupProps {
   children: React.ReactNode;
-  horizontal?: boolean;
+  variant?: FormGroupVariant;
 }
 
 export const FormGroup: React.FC<FormGroupProps> = ({
   children,
-  horizontal,
+  variant = 'horizontal',
   ...props
 }) => {
   return (
     <vscode-form-group
       {...props}
-      horizontal={horizontal}
+      variant={variant}
     >
       {children}
     </vscode-form-group>

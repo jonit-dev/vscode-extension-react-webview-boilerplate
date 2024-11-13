@@ -15,12 +15,28 @@ declare global {
       'vscode-multi-select': any;
       'vscode-option': any;
       'vscode-progress-ring': any;
-      'vscode-radio': any;
-      'vscode-radio-group': any;
+      'vscode-radio': {
+        label?: string;
+        value?: string;
+        name?: string;
+        checked?: boolean;
+        disabled?: boolean;
+        required?: boolean;
+        invalid?: boolean;
+        onChange?: (event: Event) => void;
+        children?: React.ReactNode;
+      };
+      'vscode-radio-group': {
+        variant?: 'horizontal' | 'vertical';
+        name?: string;
+        children?: React.ReactNode;
+        onChange?: (event: Event) => void;
+      };
       'vscode-scrollable': any;
       'vscode-tabs': any;
       'vscode-tab-header': any;
       'vscode-tab-panel': any;
+      'vscode-textfield': any;
     }
   }
 }
