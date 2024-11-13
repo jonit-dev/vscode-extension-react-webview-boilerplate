@@ -1,71 +1,159 @@
-# vscode-extension-react-webview README
+# VSCode Extension React Webview Template
 
-This is the README for your extension "vscode-extension-react-webview". After writing up a brief description, we recommend including the following sections.
+A template for building VSCode extensions with React webviews that optimizes the development experience by enabling rapid UI development in the browser.
 
-## Features
+## 🚀 Key Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Fast Development Cycle**: Develop and debug your React UI in the browser with hot reload
+- **Unified Build System**: Single esbuild configuration for both extension and webview
+- **Clean Architecture**: Standardized directory structure and build outputs
+- **TypeScript Support**: Full TypeScript support for both extension and React code
 
-For example if there is an image subfolder under your extension project workspace:
+## 🎯 Purpose
 
-\!\[feature X\]\(images/feature-x.png\)
+Building VSCode extensions with webviews can be slow due to the need to constantly rebuild and reload the extension to see UI changes. This template solves that by:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Allowing you to develop the React UI in a browser with hot reload
+2. Maintaining the same build output structure for both development and production
+3. Providing a seamless transition between browser development and VSCode testing
 
-## Requirements
+## 🛠 Installation
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+```bash
+yarn install
+```
 
-## Extension Settings
+## 🏃‍♂️ Development Workflow
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### 1. Browser Development (Fast UI Development = Hot Reload!)
 
-For example:
+```bash
+yarn dev
+```
 
-This extension contributes the following settings:
+This will:
+- Start a development server at http://localhost:3000
+- Enable hot reload for React components
+- Serve the webview content from the unified `dist` directory
+- Perfect for rapid UI development and iterations
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Make changes to your React components in `src/webview` and see them instantly in the browser!
 
-## Known Issues
+### 2. VSCode Extension Testing
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+Press `F5` in VSCode to:
+- Clean the dist directory
+- Build both extension and webview
+- Launch a new VSCode instance with your extension
 
-## Release Notes
+Use this to test the full integration of your UI with the extension.
 
-Users appreciate release notes as you update your extension.
+### Development Tips
 
-### 1.0.0
+1. **Browser Development (Main Development Flow)**
+   - Run `yarn dev`
+   - Open http://localhost:3000 in your browser
+   - Edit React components in `src/webview`
+   - See changes instantly in browser
+   - Use browser dev tools for debugging
+   - Perfect for rapid UI development
 
-Initial release of ...
+2. **VSCode Testing (Integration Testing)**
+   - Press F5 in VSCode
+   - Test extension features
+   - Verify UI integration
+   - Debug extension logic
+   - Note: Changes require extension reload
 
-### 1.0.1
+## 📁 Project Structure
 
-Fixed issue #.
+```
+.
+├── src/
+│   ├── extension.ts        # VSCode extension entry point
+│   └── webview/           
+│       ├── App.tsx        # React application
+│       ├── main.tsx       # React entry point
+│       └── index.html     # Webview HTML template
+├── dist/                  # Build output directory
+│   ├── extension.js       # Built extension
+│   ├── webview.js        # Built React application
+│   └── index.html        # Copied webview template
+└── package.json          # Project configuration
+```
 
-### 1.1.0
+## 🛠 Available Scripts
 
-Added features X, Y, and Z.
+- `yarn dev`: Start development server for browser-based UI development
+- `yarn build`: Build extension and webview for testing
+- `yarn clean`: Clean build outputs
+- `yarn compile`: Full build with type checking and linting
+- `yarn package`: Build for production deployment
 
----
+## 💡 Best Practices
 
-## Following extension guidelines
+1. **Development Flow**
+   - Use browser development for UI work
+   - Test in VSCode when integrating with extension features
+   - Keep the webview logic separate from VSCode-specific code
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+2. **Code Organization**
+   - Keep React components in `src/webview`
+   - Place VSCode extension logic in `src/extension.ts`
+   - Use TypeScript for better type safety
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+3. **Testing**
+   - Test UI components in the browser first
+   - Use VSCode's debugger for extension logic
+   - Final testing should be done in VSCode
 
-## Working with Markdown
+## 🔍 Debugging
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+- Browser: Use your browser's dev tools while running `yarn dev`
+- VSCode Extension: Use VSCode's built-in debugger (F5)
+- React Components: React Dev Tools work in browser development
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+## 🚧 Troubleshooting
 
-## For more information
+1. **Hot Reload Not Working**
+   - Ensure you're running `yarn dev`
+   - Check browser console for errors
+   - Verify you're using http://localhost:3000
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+2. **VSCode Extension Not Updating**
+   - Press F5 to rebuild and reload
+   - Check VSCode's Developer Tools for errors
+   - Ensure dist directory is clean (`yarn clean`)
 
-**Enjoy!**
+3. **Build Issues**
+   - Run `yarn clean` to remove old builds
+   - Check TypeScript errors with `yarn check-types`
+   - Verify esbuild configuration in `esbuild.js`
+
+## 📦 Building for Production
+
+1. Build the extension:
+```bash
+yarn build
+```
+
+2. Test the production build:
+- Press F5 in VSCode to launch with production build
+- Verify all features work as expected
+
+3. Package for distribution:
+```bash
+yarn package
+```
+
+## Limitations
+
+- **No VSCode Extension Host Hot Reload**: Changes to the extension code require another build. That's why I recommend using the browser development flow for UI work and only testing in VSCode when integrating with extension features. This is a VSCode extension dev limitation (Nov 2024).
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+MIT
