@@ -7,11 +7,10 @@ import { DividerDemo } from './components/demos/DividerDemo';
 import { FormDemo } from './components/demos/FormDemo';
 import { IconDemo } from './components/demos/IconDemo';
 import { LabelDemo } from './components/demos/LabelDemo';
-import { MultiSelectDemo } from './components/demos/MultiSelectDemo';
 import { ProgressRingDemo } from './components/demos/ProgressRingDemo';
 import { RadioDemo } from './components/demos/RadioDemo';
 import { ScrollableDemo } from './components/demos/ScrollableDemo';
-import { SelectDemo } from './components/demos/SelectDemo';
+import { SelectsDemo } from './components/demos/SelectsDemo';
 import { TabsDemo } from './components/demos/TabsDemo';
 import { TabHeader, TabPanel, Tabs } from './components/vscode-elements/Tabs';
 import { useVSCodeElements } from './hooks/useVSCodeElements';
@@ -64,11 +63,6 @@ const App: React.FC = () => {
           <LabelDemo />
         </TabPanel>
 
-        <TabHeader>MultiSelect</TabHeader>
-        <TabPanel>
-          <MultiSelectDemo />
-        </TabPanel>
-
         <TabHeader>Progress Ring</TabHeader>
         <TabPanel>
           <ProgressRingDemo />
@@ -86,7 +80,7 @@ const App: React.FC = () => {
 
         <TabHeader>Selects</TabHeader>
         <TabPanel>
-          <SelectDemo />
+          <SelectsDemo />
         </TabPanel>
 
         <TabHeader>Tabs</TabHeader>

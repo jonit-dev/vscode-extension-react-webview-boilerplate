@@ -1,17 +1,77 @@
 import React, { useState } from 'react';
 import { FormGroup } from '../vscode-elements/FormGroup';
 import { FormHelper } from '../vscode-elements/FormHelper';
+import { Label } from '../vscode-elements/Label';
 import { MultiSelect, MultiSelectOption } from '../vscode-elements/MultiSelect';
+import { Option, SingleSelect } from '../vscode-elements/SingleSelect';
 
-export const MultiSelectDemo: React.FC = () => {
+export const SelectsDemo: React.FC = () => {
+  const [basicValue, setBasicValue] = useState('ipsum');
   const [selectedFruits, setSelectedFruits] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>(['blue', 'red']);
 
   return (
     <div>
+      <h2>Single Select Examples</h2>
+
+      <FormGroup>
+        <Label>Basic Example</Label>
+        <SingleSelect
+          id="select-example"
+          value={basicValue}
+          onChange={value => setBasicValue(value)}
+        >
+          <Option
+            value="lorem"
+            description="Consectetur adipiscing elit"
+          >
+            Lorem
+          </Option>
+          <Option
+            value="ipsum"
+            description="Donec elit odio"
+          >
+            Ipsum
+          </Option>
+          <Option
+            value="dolor"
+            description="Aliquam ac vulputate eros"
+          >
+            Dolor
+          </Option>
+        </SingleSelect>
+        <FormHelper>Basic single select with descriptions</FormHelper>
+      </FormGroup>
+
+      <FormGroup>
+        <Label>Disabled Single Select</Label>
+        <SingleSelect disabled value="ipsum">
+          <Option
+            value="lorem"
+            description="Consectetur adipiscing elit"
+          >
+            Lorem
+          </Option>
+          <Option
+            value="ipsum"
+            description="Donec elit odio"
+          >
+            Ipsum
+          </Option>
+          <Option
+            value="dolor"
+            description="Aliquam ac vulputate eros"
+          >
+            Dolor
+          </Option>
+        </SingleSelect>
+        <FormHelper>Disabled single select example</FormHelper>
+      </FormGroup>
+
       <h2>MultiSelect Examples</h2>
 
       <FormGroup>
+        <Label>Basic MultiSelect</Label>
         <MultiSelect
           value={selectedFruits}
           onChange={setSelectedFruits}
@@ -25,8 +85,8 @@ export const MultiSelectDemo: React.FC = () => {
         <FormHelper>Basic multi-select example</FormHelper>
       </FormGroup>
 
-      <h2>With Default Values</h2>
       <FormGroup>
+        <Label>With Default Values</Label>
         <MultiSelect
           value={selectedColors}
           onChange={setSelectedColors}
@@ -40,8 +100,8 @@ export const MultiSelectDemo: React.FC = () => {
         <FormHelper>Pre-selected values: blue, red</FormHelper>
       </FormGroup>
 
-      <h2>Disabled State</h2>
       <FormGroup>
+        <Label>Disabled MultiSelect</Label>
         <MultiSelect
           disabled
           value={[]}
@@ -55,8 +115,8 @@ export const MultiSelectDemo: React.FC = () => {
         <FormHelper>Disabled multi-select example</FormHelper>
       </FormGroup>
 
-      <h2>With Disabled Options</h2>
       <FormGroup>
+        <Label>With Disabled Options</Label>
         <MultiSelect
           value={[]}
           onChange={() => { }}
