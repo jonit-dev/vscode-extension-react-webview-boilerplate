@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface BadgeProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: 'counter' | 'status';
+  variant?: 'counter' | 'activity-bar-counter';
 }
 
 export const Badge: React.FC<BadgeProps> = ({

@@ -7,8 +7,25 @@
   --vscode-button-secondaryForeground: #ffffff;
   --vscode-button-secondaryHoverBackground: #45494e;
 
+  /* Badge styles */
+  --vscode-badge-background: #4d4d4d;
+  --vscode-badge-foreground: #ffffff;
+  --vscode-activityBarBadge-background: #007acc;
+  --vscode-activityBarBadge-foreground: #ffffff;
+
+  /* Checkbox styles */
+  --vscode-settings-checkboxBackground: #3c3c3c;
+  --vscode-settings-checkboxForeground: #ffffff;
+  --vscode-settings-checkboxBorder: #3c3c3c;
+  --vscode-checkbox-background: #3c3c3c;
+  --vscode-checkbox-foreground: #ffffff;
+  --vscode-checkbox-border: #3c3c3c;
+  --vscode-input-background: #3c3c3c;
+  --vscode-input-foreground: #ffffff;
+  --vscode-input-border: #3c3c3c;
+
   /* Default colors */
-  --vscode-foreground: #cccccc;
+  --vscode-foreground: #ffffff;
   --vscode-disabledForeground: #848484;
   --vscode-editor-background: #1e1e1e;
 
@@ -29,4 +46,11 @@ body {
   font-weight: var(--vscode-font-weight);
   margin: 0;
   padding: 0;
+}
+
+/* Additional checkbox styles */
+vscode-checkbox {
+  display: block;
+  margin: 8px 0;
+  color: var(--vscode-foreground);
 }
