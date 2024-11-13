@@ -2,23 +2,40 @@
   --vscode-settings-checkboxBackground: #3c3c3c;
   --vscode-settings-checkboxForeground: #ffffff;
   --vscode-settings-checkboxBorder: #3c3c3c;
-  --vscode-checkbox-background: #3c3c3c;
-  --vscode-checkbox-foreground: #ffffff;
-  --vscode-checkbox-border: #3c3c3c;
-  --vscode-input-background: #3c3c3c;
-  --vscode-input-foreground: #ffffff;
-  --vscode-input-border: #3c3c3c;
+  --vscode-checkbox-background: transparent;
+  --vscode-checkbox-foreground: #cccccc;
+  --vscode-checkbox-border: #cccccc;
 }
 
 vscode-checkbox {
-  display: block;
-  margin: 8px 0;
-  color: var(--vscode-foreground);
-  background-color: var(--vscode-checkbox-background);
-  border: 1px solid var(--vscode-checkbox-border);
+  display: inline-flex;
+  align-items: center;
+  color: var(--vscode-checkbox-foreground);
+  background: var(--vscode-checkbox-background);
+  font-family: var(--vscode-font-family);
+  cursor: pointer;
+  gap: 6px;
 
   &[checked] {
-    background-color: var(--vscode-settings-checkboxBackground);
-    color: var(--vscode-settings-checkboxForeground);
+    color: var(--vscode-checkbox-foreground);
+  }
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+vscode-checkbox-group {
+  display: flex;
+  gap: 8px;
+
+  &[variant="vertical"] {
+    flex-direction: column;
+  }
+
+  &[variant="horizontal"] {
+    flex-direction: row;
+    align-items: center;
   }
 }
