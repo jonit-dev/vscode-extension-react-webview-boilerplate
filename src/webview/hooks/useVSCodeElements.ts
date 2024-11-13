@@ -13,6 +13,10 @@ export const useVSCodeElements = () => {
         await import('@vscode-elements/elements/dist/vscode-checkbox');
         await import('@vscode-elements/elements/dist/vscode-checkbox-group');
       }
+      if (!customElements.get('vscode-collapsible')) {
+        await import('@vscode-elements/elements/dist/vscode-collapsible');
+        await import('@vscode-elements/elements/dist/vscode-icon');
+      }
     };
 
     importElements();

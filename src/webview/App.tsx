@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Badge } from './components/vscode-elements/Badge';
 import { Button } from './components/vscode-elements/Button';
 import { Checkbox } from './components/vscode-elements/Checkbox';
+import { Collapsible } from './components/vscode-elements/Collapsible';
 import { useVSCodeElements } from './hooks/useVSCodeElements';
 
 const App: React.FC = () => {
@@ -43,6 +44,35 @@ const App: React.FC = () => {
             <b>Hello</b> World!
           </Checkbox>
           <Checkbox disabled label="Disabled checkbox" />
+        </div>
+
+        <div style={{ display: 'flex', gap: '10px', flexDirection: 'column', marginTop: '20px' }}>
+          <Collapsible title="Basic example" open>
+            <p>Open by default</p>
+          </Collapsible>
+
+          <Collapsible title="With actions" open>
+            <vscode-icon
+              name="file-add"
+              action-icon
+              aria-role="button"
+              title="New File"
+              slot="actions"
+            />
+            <vscode-icon
+              name="refresh"
+              action-icon
+              aria-role="button"
+              title="Refresh"
+              slot="actions"
+            />
+            <p>Example with action icons</p>
+          </Collapsible>
+
+          <Collapsible title="With decorations">
+            <vscode-badge variant="counter" slot="decorations">99</vscode-badge>
+            <p>Example with badge decoration</p>
+          </Collapsible>
         </div>
       </div>
     </div>

@@ -24,6 +24,13 @@
   --vscode-input-foreground: #ffffff;
   --vscode-input-border: #3c3c3c;
 
+  /* Collapsible styles */
+  --vscode-collapsible-background: #252526;
+  --vscode-collapsible-foreground: #ffffff;
+  --vscode-collapsible-border: #3c3c3c;
+  --vscode-collapsible-icon-foreground: #848484;
+  --vscode-collapsible-expanded-background: #2d2d2d;
+
   /* Default colors */
   --vscode-foreground: #ffffff;
   --vscode-disabledForeground: #848484;
@@ -53,4 +60,42 @@ vscode-checkbox {
   display: block;
   margin: 8px 0;
   color: var(--vscode-foreground);
+}
+
+/* Collapsible styles */
+vscode-collapsible {
+  display: block;
+  margin: 8px 0;
+  background-color: var(--vscode-collapsible-background);
+  color: var(--vscode-collapsible-foreground);
+  border: 1px solid var(--vscode-collapsible-border);
+  border-radius: 2px;
+}
+
+vscode-collapsible[open] {
+  background-color: var(--vscode-collapsible-expanded-background);
+}
+
+vscode-collapsible [slot="actions"] {
+  color: var(--vscode-collapsible-icon-foreground);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+vscode-collapsible [slot="actions"]:hover {
+  opacity: 1;
+}
+
+vscode-collapsible [slot="decorations"] {
+  margin-left: 4px;
+}
+
+/* Custom collapsible examples */
+.collapsible.css-part-example {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.collapsible.complex-example vscode-scrollable {
+  max-height: 400px;
 }
