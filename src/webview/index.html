@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VSCode Webview</title>
     <script>
-      // Live reload
-      const eventSource = new EventSource('/esbuild');
-      eventSource.addEventListener('change', () => location.reload());
+      // Live reload for development
+      if (window.location.hostname === 'localhost') {
+        const eventSource = new EventSource('/esbuild');
+        eventSource.addEventListener('change', () => location.reload());
+      }
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <script src="/dist/webview.js"></script>
+    <script src="/webview.js"></script>
   </body>
 </html>
