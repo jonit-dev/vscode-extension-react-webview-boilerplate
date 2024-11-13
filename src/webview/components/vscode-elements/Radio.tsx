@@ -1,11 +1,25 @@
 import React from 'react';
 
-interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLElement>, 'onChange'> {
+interface RadioProps {
   label?: string;
   checked?: boolean;
   disabled?: boolean;
   value: string;
+  name?: string;
+  children?: React.ReactNode;
   onChange?: (checked: boolean) => void;
+}
+
+interface CustomRadioEvent extends CustomEvent {
+  detail: {
+    checked: boolean;
+  };
+}
+
+interface CustomRadioGroupEvent extends CustomEvent {
+  detail: {
+    value: string;
+  };
 }
 
 export const Radio: React.FC<RadioProps> = ({
@@ -13,18 +27,23 @@ export const Radio: React.FC<RadioProps> = ({
   checked,
   disabled,
   value,
+  name,
   onChange,
   children,
-  ...props
 }) => {
+  const handleChange = (event: Event) => {
+    const customEvent = event as CustomRadioEvent;
+    onChange?.(customEvent.detail.checked);
+  };
+
   return (
     <vscode-radio
-      {...props}
       checked={checked}
       disabled={disabled}
       value={value}
+      name={name}
       label={label}
-      onChange={(event: CustomEvent) => onChange?.(event.detail.checked)}
+      onChange={handleChange}
     >
       {children}
     </vscode-radio>
@@ -32,7 +51,7 @@ export const Radio: React.FC<RadioProps> = ({
 };
 
 interface RadioGroupProps {
-  children: React.ReactNode;
+  children: React.ReactElement<RadioProps> | React.ReactElement<RadioProps>[];
   value?: string;
   disabled?: boolean;
   variant?: 'vertical' | 'horizontal';
@@ -45,17 +64,33 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   disabled,
   variant = 'vertical',
   onChange,
-  ...props
 }) => {
+  const handleChange = (event: Event) => {
+    const customEvent = event as CustomRadioGroupEvent;
+    onChange?.(customEvent.detail.value);
+  };
+
+  const groupName = React.useId();
+
+  const radioButtons = React.Children.map(children, (child) => {
+    if (React.isValidElement<RadioProps>(child)) {
+      return React.cloneElement(child, {
+        ...child.props,
+        checked: child.props.value === value,
+        disabled: disabled || child.props.disabled,
+        name: groupName,
+      });
+    }
+    return child;
+  });
+
   return (
     <vscode-radio-group
-      {...props}
-      value={value}
-      disabled={disabled}
+      name={groupName}
       variant={variant}
-      onChange={(event: CustomEvent) => onChange?.(event.detail.value)}
+      onChange={handleChange}
     >
-      {children}
+      {radioButtons}
     </vscode-radio-group>
   );
 };
