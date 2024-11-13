@@ -1,27 +1,20 @@
-import React, { useEffect } from 'react';
-
-// Import only what we need
-const importVSCodeElements = async () => {
-  if (!customElements.get('vscode-button')) {
-    await import('@vscode-elements/elements/dist/vscode-button');
-  }
-};
+import React from 'react';
+import { Button } from './components/vscode-elements/Button';
+import { useVSCodeElements } from './hooks/useVSCodeElements';
 
 const App: React.FC = () => {
-  useEffect(() => {
-    importVSCodeElements();
-  }, []);
+  useVSCodeElements();
 
   return (
     <div className='app-container' style={{ padding: '20px' }}>
       <h1>VSCode Webview React - Hot Reload</h1>
       <p>This is a React-powered webview in VSCode!!!</p>
-      
+
       <div style={{ display: 'flex', gap: '10px', flexDirection: 'column', maxWidth: '300px' }}>
-        <vscode-button id="button-1">Button</vscode-button>
-        <vscode-button id="button-2" secondary>Secondary button</vscode-button>
-        <vscode-button id="button-3" disabled>Disabled button</vscode-button>
-        <vscode-button id="button-4" icon="account" icon-after="chevron-right">Icons</vscode-button>
+        <Button id="button-1">Button</Button>
+        <Button id="button-2" secondary>Secondary button</Button>
+        <Button id="button-3" disabled>Disabled button</Button>
+        <Button id="button-4" icon="account" iconAfter="chevron-right">Icons</Button>
       </div>
     </div>
   );
