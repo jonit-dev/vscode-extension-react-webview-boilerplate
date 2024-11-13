@@ -29,15 +29,43 @@ vscode-form-container {
 }
 
 vscode-form-group {
+  --label-right-margin: 14px;
+  --label-width: 150px;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
   width: 100%;
 
-  &[horizontal] {
+  &[variant="horizontal"] {
     flex-direction: row;
     align-items: center;
     gap: 16px;
+
+    >vscode-label {
+      flex: 0 0 var(--label-width);
+      margin-right: var(--label-right-margin);
+    }
+  }
+
+  &[variant="vertical"] {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &[variant="settings-group"] {
+    flex-direction: column;
+    gap: 4px;
+
+    >vscode-form-helper {
+      order: 2;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    >*:last-child {
+      order: 3;
+    }
   }
 }
 
@@ -57,5 +85,29 @@ vscode-form-helper {
 
   &[severity="info"] {
     color: var(--vscode-infoForeground);
+  }
+
+  code {
+    font-family: var(--vscode-editor-font-family);
+    background: var(--vscode-textBlockQuote-background);
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+
+  .error {
+    color: var(--vscode-errorForeground);
+  }
+
+  .normal {
+    font-weight: normal;
+  }
+
+  a {
+    color: var(--vscode-textLink-foreground);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
