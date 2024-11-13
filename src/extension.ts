@@ -50,6 +50,7 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
       enableScripts: true,
       localResourceRoots: [
         vscode.Uri.joinPath(this._extensionUri, 'dist'),
+        vscode.Uri.joinPath(this._extensionUri, 'node_modules'),
       ],
     };
 
@@ -62,12 +63,17 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
       vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
     );
 
+    const vscodeElementsUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, 'node_modules', '@vscode-elements', 'elements', 'dist', 'bundled.js')
+    );
+
     return `<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>React Webview</title>
+                <script src="${vscodeElementsUri}" type="module"></script>
             </head>
             <body>
                 <div id="root"></div>
@@ -134,6 +140,7 @@ class ReactPanel {
         enableScripts: true,
         localResourceRoots: [
           vscode.Uri.joinPath(extensionUri, 'dist'),
+          vscode.Uri.joinPath(extensionUri, 'node_modules'),
         ],
       }
     );
@@ -153,12 +160,17 @@ class ReactPanel {
       vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
     );
 
+    const vscodeElementsUri = webview.asWebviewUri(
+      vscode.Uri.joinPath(this._extensionUri, 'node_modules', '@vscode-elements', 'elements', 'dist', 'bundled.js')
+    );
+
     return `<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>React Webview</title>
+                <script src="${vscodeElementsUri}" type="module"></script>
             </head>
             <body>
                 <div id="root"></div>

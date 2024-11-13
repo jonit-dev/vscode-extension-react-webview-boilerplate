@@ -1,0 +1,32 @@
+:root {
+  /* Button styles */
+  --vscode-button-background: #0e639c;
+  --vscode-button-foreground: #ffffff;
+  --vscode-button-hoverBackground: #1177bb;
+  --vscode-button-secondaryBackground: #3a3d41;
+  --vscode-button-secondaryForeground: #ffffff;
+  --vscode-button-secondaryHoverBackground: #45494e;
+
+  /* Default colors */
+  --vscode-foreground: #cccccc;
+  --vscode-disabledForeground: #848484;
+  --vscode-editor-background: #1e1e1e;
+
+  /* Font styles */
+  --vscode-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --vscode-font-weight: normal;
+  --vscode-font-size: 13px;
+
+  /* Focus border */
+  --vscode-focusBorder: #007fd4;
+}
+
+body {
+  background-color: var(--vscode-editor-background);
+  color: var(--vscode-foreground);
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  font-weight: var(--vscode-font-weight);
+  margin: 0;
+  padding: 0;
+}

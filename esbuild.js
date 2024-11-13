@@ -1,4 +1,6 @@
 const esbuild = require('esbuild');
+const fs = require('fs');
+const path = require('path');
 
 const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
@@ -41,6 +43,23 @@ const devServer = {
   host: 'localhost',
 };
 
+// Copy directory recursively
+async function copyDir(src, dest) {
+  await fs.promises.mkdir(dest, { recursive: true });
+  const entries = await fs.promises.readdir(src, { withFileTypes: true });
+
+  for (let entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (entry.isDirectory()) {
+      await copyDir(srcPath, destPath);
+    } else {
+      await fs.promises.copyFile(srcPath, destPath);
+    }
+  }
+}
+
 async function build() {
   try {
     if (watch) {
@@ -59,12 +78,26 @@ async function build() {
         }],
       });
 
-      // Copy index.html to dist
-      await esbuild.build({
-        entryPoints: ['src/webview/index.html'],
-        loader: { '.html': 'copy' },
-        outdir: 'dist',
-      });
+      // Copy static files
+      await Promise.all([
+        // Copy index.html
+        esbuild.build({
+          entryPoints: ['src/webview/index.html'],
+          loader: { '.html': 'copy' },
+          outdir: 'dist',
+        }),
+        // Copy styles
+        esbuild.build({
+          entryPoints: ['src/webview/styles/vscode-dev.css'],
+          loader: { '.css': 'copy' },
+          outdir: 'dist/styles',
+        }),
+        // Copy VSCode Elements bundle
+        copyDir(
+          'node_modules/@vscode-elements/elements/dist',
+          'dist/node_modules/@vscode-elements/elements/dist'
+        ),
+      ]);
 
       // Start dev server and watch for changes
       await ctx.serve(devServer);
