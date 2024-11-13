@@ -25,6 +25,34 @@ export const useVSCodeElements = () => {
       if (!customElements.get('vscode-scrollable')) {
         await import('@vscode-elements/elements/dist/vscode-scrollable');
       }
+      if (!customElements.get('vscode-divider')) {
+        await import('@vscode-elements/elements/dist/vscode-divider');
+      }
+      if (!customElements.get('vscode-form-container')) {
+        await import('@vscode-elements/elements/dist/vscode-form-container');
+      }
+      if (!customElements.get('vscode-form-group')) {
+        await import('@vscode-elements/elements/dist/vscode-form-group');
+      }
+      if (!customElements.get('vscode-form-helper')) {
+        await import('@vscode-elements/elements/dist/vscode-form-helper');
+      }
+      if (!customElements.get('vscode-label')) {
+        await import('@vscode-elements/elements/dist/vscode-label');
+      }
+      if (!customElements.get('vscode-multi-select')) {
+        await import('@vscode-elements/elements/dist/vscode-multi-select');
+      }
+      if (!customElements.get('vscode-progress-ring')) {
+        await import('@vscode-elements/elements/dist/vscode-progress-ring');
+      }
+      if (!customElements.get('vscode-radio')) {
+        await import('@vscode-elements/elements/dist/vscode-radio');
+        await import('@vscode-elements/elements/dist/vscode-radio-group');
+      }
+      if (!customElements.get('vscode-context-menu')) {
+        await import('@vscode-elements/elements/dist/vscode-context-menu');
+      }
     };
 
     importElements();
