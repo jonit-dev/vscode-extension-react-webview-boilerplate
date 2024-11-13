@@ -1,0 +1,18 @@
+vscode-divider {
+  display: block;
+  border: none;
+
+  &[orientation="horizontal"] {
+    height: 0;
+    margin: 0.5rem 0;
+    width: 100%;
+    border-top: 1px solid #424242;
+  }
+
+  &[orientation="vertical"] {
+    width: 0;
+    height: 100%;
+    margin: 0 0.5rem;
+    border-left: 1px solid #424242;
+  }
+}
