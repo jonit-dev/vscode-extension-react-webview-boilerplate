@@ -70,18 +70,6 @@
     "format": "prettier --write . --log-level silent",
     "prepare": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn tsc && yarn lint && yarn format"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "yarn tsc --noEmit",
-      "yarn lint",
-      "yarn format"
-    ]
-  },
   "devDependencies": {
     "@types/mocha": "^10.0.9",
     "@types/node": "20.x",
