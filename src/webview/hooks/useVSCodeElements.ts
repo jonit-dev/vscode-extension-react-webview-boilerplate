@@ -77,6 +77,7 @@ export const useVSCodeElements = () => {
     try {
       importElements();
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error("Failed to import VSCode elements:", error);
       setIsLoading(false);
     }

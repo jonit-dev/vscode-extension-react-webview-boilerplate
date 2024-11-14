@@ -1,4 +1,4 @@
-import { useVSCodeElements } from '@hooks/useVSCodeElements';
+import { useVSCodeElements } from "@hooks/useVSCodeElements";
 import React from "react";
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import { Demo } from "./Demo";
