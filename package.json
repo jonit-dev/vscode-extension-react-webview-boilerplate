@@ -68,9 +68,12 @@
     "test:extension": "vscode-test",
     "format": "prettier --write . --log-level silent",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "playwright test",
+    "playwright:wsl:setup": "./environment/wsl-playwright-setup.sh"
   },
   "devDependencies": {
+    "@playwright/test": "^1.48.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.0.0",
