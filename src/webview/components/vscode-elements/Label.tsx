@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   required?: boolean;
   disabled?: boolean;
 }
 
-export const Label: React.FC<LabelProps> = ({
+export const Label: React.FC<ILabelProps> = ({
   children,
   required,
   disabled,

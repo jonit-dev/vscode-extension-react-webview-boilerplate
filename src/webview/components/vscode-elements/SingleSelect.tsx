@@ -1,13 +1,13 @@
 import React from 'react';
 
-interface OptionProps {
+interface IOptionProps {
   children: React.ReactNode;
   value: string;
   description?: string;
   disabled?: boolean;
 }
 
-export const Option: React.FC<OptionProps> = ({
+export const Option: React.FC<IOptionProps> = ({
   children,
   value,
   description,
@@ -26,7 +26,7 @@ export const Option: React.FC<OptionProps> = ({
   );
 };
 
-interface SingleSelectProps {
+interface ISingleSelectProps {
   id?: string;
   children: React.ReactNode;
   value?: string;
@@ -36,13 +36,13 @@ interface SingleSelectProps {
   onChange?: (value: string) => void;
 }
 
-interface CustomSelectEvent extends Event {
+interface ICustomSelectEvent extends Event {
   detail: {
     value: string;
   };
 }
 
-export const SingleSelect: React.FC<SingleSelectProps> = ({
+export const SingleSelect: React.FC<ISingleSelectProps> = ({
   children,
   value,
   disabled,
@@ -52,7 +52,7 @@ export const SingleSelect: React.FC<SingleSelectProps> = ({
   ...props
 }) => {
   const handleChange = (event: Event) => {
-    const customEvent = event as CustomSelectEvent;
+    const customEvent = event as ICustomSelectEvent;
     onChange?.(customEvent.detail.value);
   };
 

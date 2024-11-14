@@ -2,12 +2,12 @@ import React from 'react';
 
 type Severity = 'error' | 'warning' | 'info';
 
-interface FormHelperProps {
+interface IFormHelperProps {
   children: React.ReactNode;
   severity?: Severity;
 }
 
-export const FormHelper: React.FC<FormHelperProps> = ({
+export const FormHelper: React.FC<IFormHelperProps> = ({
   children,
   severity,
   ...props

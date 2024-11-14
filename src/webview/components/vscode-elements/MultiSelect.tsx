@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface MultiSelectProps {
+interface IMultiSelectProps {
   children: React.ReactNode;
   value?: string[];
   disabled?: boolean;
@@ -8,7 +8,7 @@ interface MultiSelectProps {
   onChange?: (value: string[]) => void;
 }
 
-export const MultiSelect: React.FC<MultiSelectProps> = ({
+export const MultiSelect: React.FC<IMultiSelectProps> = ({
   children,
   value = [],
   disabled,
@@ -31,13 +31,13 @@ export const MultiSelect: React.FC<MultiSelectProps> = ({
   );
 };
 
-interface OptionProps {
+interface IOptionProps {
   children: React.ReactNode;
   value: string;
   disabled?: boolean;
 }
 
-export const MultiSelectOption: React.FC<OptionProps> = ({
+export const MultiSelectOption: React.FC<IOptionProps> = ({
   children,
   value,
   disabled,

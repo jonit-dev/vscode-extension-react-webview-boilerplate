@@ -2,12 +2,12 @@ import React from 'react';
 
 type FormGroupVariant = 'horizontal' | 'vertical' | 'settings-group';
 
-interface FormGroupProps {
+interface IFormGroupProps {
   children: React.ReactNode;
   variant?: FormGroupVariant;
 }
 
-export const FormGroup: React.FC<FormGroupProps> = ({
+export const FormGroup: React.FC<IFormGroupProps> = ({
   children,
   variant = 'horizontal',
   ...props

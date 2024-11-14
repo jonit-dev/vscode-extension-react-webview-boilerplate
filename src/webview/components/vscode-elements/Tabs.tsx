@@ -1,17 +1,18 @@
 import React from 'react';
+import '../../types/vscode-elements.d.ts';
 
-interface TabsProps extends React.HTMLAttributes<HTMLElement> {
+interface ITabsProps extends React.HTMLAttributes<HTMLElement> {
   selectedIndex?: number;
   panel?: boolean;
 }
 
-interface TabHeaderProps extends React.HTMLAttributes<HTMLElement> {
+interface ITabHeaderProps extends React.HTMLAttributes<HTMLElement> {
   slot?: 'header';
 }
 
-interface TabPanelProps extends React.HTMLAttributes<HTMLElement> { }
+interface ITabPanelProps extends React.HTMLAttributes<HTMLElement> { }
 
-export const TabHeader: React.FC<TabHeaderProps> = ({
+export const TabHeader: React.FC<ITabHeaderProps> = ({
   children,
   ...props
 }) => {
@@ -22,7 +23,7 @@ export const TabHeader: React.FC<TabHeaderProps> = ({
   );
 };
 
-export const TabPanel: React.FC<TabPanelProps> = ({
+export const TabPanel: React.FC<ITabPanelProps> = ({
   children,
   ...props
 }) => {
@@ -33,7 +34,7 @@ export const TabPanel: React.FC<TabPanelProps> = ({
   );
 };
 
-export const Tabs: React.FC<TabsProps> = ({
+export const Tabs: React.FC<ITabsProps> = ({
   children,
   selectedIndex = 0,
   panel,

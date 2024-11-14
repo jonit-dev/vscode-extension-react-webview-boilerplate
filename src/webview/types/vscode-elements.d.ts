@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 declare global {
   namespace JSX {
     interface IntrinsicElements {

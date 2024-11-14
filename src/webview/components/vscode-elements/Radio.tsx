@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface RadioProps {
+interface IRadioProps {
   label?: string;
   checked?: boolean;
   disabled?: boolean;
@@ -10,19 +10,22 @@ interface RadioProps {
   onChange?: (checked: boolean) => void;
 }
 
-interface CustomRadioEvent extends CustomEvent {
+interface ICustomRadioEvent extends CustomEvent {
   detail: {
     checked: boolean;
-  };
-}
-
-interface CustomRadioGroupEvent extends CustomEvent {
-  detail: {
     value: string;
   };
 }
 
-export const Radio: React.FC<RadioProps> = ({
+interface IRadioGroupProps {
+  children: React.ReactElement<IRadioProps> | React.ReactElement<IRadioProps>[];
+  value?: string;
+  disabled?: boolean;
+  variant?: 'vertical' | 'horizontal';
+  onChange?: (value: string) => void;
+}
+
+export const Radio: React.FC<IRadioProps> = ({
   label,
   checked,
   disabled,
@@ -32,7 +35,7 @@ export const Radio: React.FC<RadioProps> = ({
   children,
 }) => {
   const handleChange = (event: Event) => {
-    const customEvent = event as CustomRadioEvent;
+    const customEvent = event as ICustomRadioEvent;
     onChange?.(customEvent.detail.checked);
   };
 
@@ -50,15 +53,7 @@ export const Radio: React.FC<RadioProps> = ({
   );
 };
 
-interface RadioGroupProps {
-  children: React.ReactElement<RadioProps> | React.ReactElement<RadioProps>[];
-  value?: string;
-  disabled?: boolean;
-  variant?: 'vertical' | 'horizontal';
-  onChange?: (value: string) => void;
-}
-
-export const RadioGroup: React.FC<RadioGroupProps> = ({
+export const RadioGroup: React.FC<IRadioGroupProps> = ({
   children,
   value,
   disabled,
@@ -66,14 +61,14 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   onChange,
 }) => {
   const handleChange = (event: Event) => {
-    const customEvent = event as CustomRadioGroupEvent;
+    const customEvent = event as ICustomRadioEvent;
     onChange?.(customEvent.detail.value);
   };
 
   const groupName = React.useId();
 
   const radioButtons = React.Children.map(children, (child) => {
-    if (React.isValidElement<RadioProps>(child)) {
+    if (React.isValidElement<IRadioProps>(child)) {
       return React.cloneElement(child, {
         ...child.props,
         checked: child.props.value === value,

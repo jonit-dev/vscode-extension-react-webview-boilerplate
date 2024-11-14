@@ -1,13 +1,13 @@
 import React from 'react';
 
-interface ScrollableProps {
+interface IScrollableProps {
   children: React.ReactNode;
   orientation?: 'vertical' | 'horizontal' | 'both';
   height?: string | number;
   maxHeight?: string | number;
 }
 
-export const Scrollable: React.FC<ScrollableProps> = ({
+export const Scrollable: React.FC<IScrollableProps> = ({
   children,
   orientation = 'vertical',
   height,

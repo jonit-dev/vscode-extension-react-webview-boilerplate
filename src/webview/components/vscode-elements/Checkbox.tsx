@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-interface VSCodeCheckboxElement extends HTMLElement {
+interface IVSCodeCheckboxElement extends HTMLElement {
   indeterminate: boolean;
   checked: boolean;
   disabled: boolean;
@@ -8,7 +8,7 @@ interface VSCodeCheckboxElement extends HTMLElement {
   label: string;
 }
 
-interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLElement>, 'onChange'> {
+interface ICheckboxProps extends Omit<React.InputHTMLAttributes<HTMLElement>, 'onChange'> {
   label?: string;
   checked?: boolean;
   disabled?: boolean;
@@ -17,7 +17,7 @@ interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLElement>, 'on
   onChange?: (checked: boolean) => void;
 }
 
-export const Checkbox: React.FC<CheckboxProps> = ({
+export const Checkbox: React.FC<ICheckboxProps> = ({
   label,
   checked,
   disabled,
@@ -27,7 +27,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   children,
   ...props
 }) => {
-  const checkboxRef = useRef<VSCodeCheckboxElement>(null);
+  const checkboxRef = useRef<IVSCodeCheckboxElement>(null);
 
   useEffect(() => {
     if (checkboxRef.current) {
@@ -50,13 +50,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   );
 };
 
-interface CheckboxGroupProps {
+interface ICheckboxGroupProps {
   children: React.ReactNode;
   disabled?: boolean;
   variant?: 'vertical' | 'horizontal';
 }
 
-export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
+export const CheckboxGroup: React.FC<ICheckboxGroupProps> = ({
   children,
   disabled,
   variant = 'horizontal',

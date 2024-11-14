@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface IconProps extends React.HTMLAttributes<HTMLElement> {
+interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   name: string;
   size?: number;
 }
 
-export const Icon: React.FC<IconProps> = ({
+export const Icon: React.FC<IIconProps> = ({
   name,
   size,
   className,

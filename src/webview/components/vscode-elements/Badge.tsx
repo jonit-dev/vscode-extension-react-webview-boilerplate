@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface BadgeProps extends React.HTMLAttributes<HTMLElement> {
+interface IBadgeProps extends React.HTMLAttributes<HTMLElement> {
   variant?: 'counter' | 'activity-bar-counter';
 }
 
-export const Badge: React.FC<BadgeProps> = ({
+export const Badge: React.FC<IBadgeProps> = ({
   children,
   variant,
   ...props

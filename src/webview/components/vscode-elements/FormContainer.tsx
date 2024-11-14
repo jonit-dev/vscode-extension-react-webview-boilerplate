@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface FormContainerProps {
+interface IFormContainerProps {
   children: React.ReactNode;
   title?: string;
   description?: string;
 }
 
-export const FormContainer: React.FC<FormContainerProps> = ({
+export const FormContainer: React.FC<IFormContainerProps> = ({
   children,
   title,
   description,

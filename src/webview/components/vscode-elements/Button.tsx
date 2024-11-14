@@ -1,13 +1,13 @@
 import React from 'react';
 
-interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
+interface IButtonProps extends React.HTMLAttributes<HTMLElement> {
   secondary?: boolean;
   disabled?: boolean;
   icon?: string;
   iconAfter?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<IButtonProps> = ({
   children,
   secondary,
   disabled,

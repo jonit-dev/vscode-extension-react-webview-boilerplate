@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface ProgressRingProps {
+interface IProgressRingProps {
   size?: number;
   indeterminate?: boolean;
 }
 
-export const ProgressRing: React.FC<ProgressRingProps> = ({
+export const ProgressRing: React.FC<IProgressRingProps> = ({
   size = 16,
   indeterminate = true,
   ...props

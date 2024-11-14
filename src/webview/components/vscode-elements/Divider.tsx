@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface DividerProps {
+interface IDividerProps {
   orientation?: 'horizontal' | 'vertical';
 }
 
-export const Divider: React.FC<DividerProps> = ({
+export const Divider: React.FC<IDividerProps> = ({
   orientation = 'horizontal',
   ...props
 }) => {
