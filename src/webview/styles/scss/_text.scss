@@ -1,0 +1,13 @@
+.link {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 0;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+}

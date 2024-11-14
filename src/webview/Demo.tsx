@@ -13,16 +13,17 @@ import { SelectsDemo } from "@components/demos/SelectsDemo";
 import { TableDemo } from "@components/demos/TableDemo";
 import { TabsDemo } from "@components/demos/TabsDemo";
 import { TextareaDemo } from "@components/demos/TextareaDemo";
+import { LinkWrapper } from "@components/LinkWrapper";
 import { TabHeader, TabPanel, Tabs } from "@components/vscode-elements/Tabs";
-import { useVSCodeElements } from "@hooks/useVSCodeElements";
 import React from "react";
 
 export const Demo: React.FC = () => {
-  useVSCodeElements();
-
   return (
     <div className="app-container" style={{ padding: "20px" }}>
       <h1>VSCode Webview React Components</h1>
+      <LinkWrapper to="/example-route">
+        Go to Example Route
+      </LinkWrapper>
 
       <Tabs>
         <TabHeader>Buttons</TabHeader>

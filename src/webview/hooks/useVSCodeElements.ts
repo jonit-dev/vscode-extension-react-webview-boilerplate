@@ -1,7 +1,8 @@
-/* eslint-disable no-console */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const useVSCodeElements = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const importElements = async () => {
       if (!customElements.get("vscode-button")) {
@@ -70,12 +71,16 @@ export const useVSCodeElements = () => {
       if (!customElements.get("vscode-textarea")) {
         await import("@vscode-elements/elements/dist/vscode-textarea");
       }
+      setIsLoading(false);
     };
 
     try {
       importElements();
     } catch (error) {
       console.error("Failed to import VSCode elements:", error);
+      setIsLoading(false);
     }
   }, []);
+
+  return isLoading;
 };
