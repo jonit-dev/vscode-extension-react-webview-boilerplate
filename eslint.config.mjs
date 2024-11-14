@@ -1,3 +1,4 @@
+/* eslint-disable import/no-default-export */
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import importPlugin from "eslint-plugin-import";
