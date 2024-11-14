@@ -199,6 +199,8 @@ yarn package
 
 - **No VSCode Extension Host Hot Reload**: Changes to the extension code require another build. That's why I recommend using the browser development flow for UI work and only testing in VSCode when integrating with extension features. This is a VSCode extension dev limitation (Nov 2024).
 
+- **It doesn't work with Cursor IDE**: The Extension Host do not load on Cursor. I didn't have time to debug yet. Just use the browser development flow for UI work and only testing in VSCode when integrating with extension features.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
