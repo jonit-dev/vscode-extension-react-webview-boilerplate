@@ -21,7 +21,8 @@
       "@services/*": ["src/webview/services/*"],
       "@styles/*": ["src/webview/styles/*"],
       "@types/*": ["src/webview/types/*"]
-    }
+    },
+    "types": ["jest", "testing-library__jest-dom"]
   },
   "include": ["src"],
   "exclude": ["node_modules", ".vscode-test"]
