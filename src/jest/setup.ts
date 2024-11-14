@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import '@testing-library/jest-dom';
-import type { TestingLibraryMatchers } from '@testing-library/jest-dom/matchers';
+import "@testing-library/jest-dom";
+import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 
 declare global {
   namespace jest {
@@ -17,5 +17,5 @@ declare global {
 globalThis.acquireVsCodeApi = () => ({
   postMessage: jest.fn(),
   setState: jest.fn(),
-  getState: jest.fn()
+  getState: jest.fn(),
 });

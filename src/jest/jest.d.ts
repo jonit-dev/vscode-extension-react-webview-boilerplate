@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 declare global {
   namespace jest {

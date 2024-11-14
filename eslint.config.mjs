@@ -46,6 +46,7 @@ export default [
       "no-throw-literal": "warn",
       semi: "warn",
       "import/no-default-export": "error",
+      "no-console": "warn", // Added rule to warn about console.log
     },
   },
 ];
