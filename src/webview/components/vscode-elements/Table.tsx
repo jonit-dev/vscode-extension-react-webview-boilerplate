@@ -52,7 +52,12 @@ interface ITableHeaderProps {
 }
 
 const TableHeader: React.FC<ITableHeaderProps> = ({ children }) => {
-  return <thead slot="header">{children}</thead>;
+  // Ensure children are wrapped in a TableRow
+  return (
+    <thead slot="header">
+      <tr className="vscode-table-row">{children}</tr>
+    </thead>
+  );
 };
 
 export { TableHeader };
