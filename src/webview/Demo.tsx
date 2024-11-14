@@ -21,9 +21,7 @@ export const Demo: React.FC = () => {
   return (
     <div className="app-container" style={{ padding: "20px" }}>
       <h1>VSCode Webview React Components</h1>
-      <LinkWrapper to="/example-route">
-        Go to Example Route
-      </LinkWrapper>
+      <LinkWrapper to="/example-route">Go to Example Route</LinkWrapper>
 
       <Tabs>
         <TabHeader>Buttons</TabHeader>
