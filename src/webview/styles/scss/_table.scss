@@ -1,0 +1,106 @@
+$table-border: var(--vscode-panel-border, #3c3c3c);
+$table-background: var(--vscode-editor-background, #1e1e1e);
+$table-header-background: var(--vscode-editor-background, #1e1e1e);
+$table-row-hover: var(--vscode-list-hoverBackground, #2a2d2e);
+$table-font-family: var(--vscode-font-family);
+$table-font-size: var(--vscode-font-size);
+$table-foreground: var(--vscode-foreground);
+
+.vscode-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: $table-font-family;
+  font-size: $table-font-size;
+  color: $table-foreground;
+  background-color: $table-background;
+
+  thead {
+    background-color: $table-header-background;
+
+    th {
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 1px solid $table-border;
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background-color: $table-row-hover;
+      }
+
+      td {
+        padding: 8px 12px;
+        border-bottom: 1px solid $table-border;
+      }
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+
+  &.zebra {
+    tbody tr:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+  }
+
+  &.bordered-rows {
+    tbody tr {
+      border-bottom: 1px solid $table-border;
+    }
+  }
+
+  &.bordered-columns {
+
+    th,
+    td {
+      border-right: 1px solid $table-border;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: none;
+    }
+  }
+
+  &.responsive {
+    display: block;
+    overflow-x: auto;
+  }
+
+  &.resizable {
+    th {
+      position: relative;
+      cursor: col-resize;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background-color: transparent;
+        z-index: 1;
+      }
+
+      &:hover::after {
+        background-color: var(--vscode-sash-hoverBorder);
+      }
+    }
+  }
+}
+
+.vscode-table-header-cell {
+  font-weight: 600;
+  color: $table-foreground;
+}
+
+.vscode-table-cell {
+  vertical-align: middle;
+}

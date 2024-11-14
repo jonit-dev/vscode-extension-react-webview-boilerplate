@@ -58,6 +58,15 @@ export const useVSCodeElements = () => {
       if (!customElements.get('vscode-context-menu')) {
         await import('@vscode-elements/elements/dist/vscode-context-menu');
       }
+      if (!customElements.get('vscode-table')) {
+        await import('@vscode-elements/elements/dist/vscode-table');
+        await import('@vscode-elements/elements/dist/vscode-table-header');
+        await import('@vscode-elements/elements/dist/vscode-table-header-cell');
+        await import('@vscode-elements/elements/dist/vscode-table-row');
+        await import('@vscode-elements/elements/dist/vscode-table-cell');
+        await import('@vscode-elements/elements/dist/vscode-table-body');
+        
+      }
     };
 
     try {
