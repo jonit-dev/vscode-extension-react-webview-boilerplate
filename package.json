@@ -66,7 +66,7 @@
     "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
-    "test": "vscode-test",
+    "test:extension": "vscode-test",
     "format": "prettier --write . --log-level silent",
     "prepare": "husky install"
   },
