@@ -67,7 +67,7 @@
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
     "test": "vscode-test",
-    "format": "prettier --write . --loglevel silent",
+    "format": "prettier --write . --log-level silent",
     "prepare": "husky install"
   },
   "husky": {
