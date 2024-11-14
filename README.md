@@ -58,10 +58,10 @@ yarn test:e2e
 ```
 
 This will:
+
 - Start the development server automatically
 - Run Playwright tests against your components
 - Generate a test report
-
 
 ### 4. Unit-Testing
 
@@ -83,6 +83,7 @@ yarn test
    - Perfect for rapid UI development
 
 2. **VSCode Testing (Integration Testing)**
+
    - Press F5 in VSCode
    - Test extension features
    - Verify UI integration
