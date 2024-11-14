@@ -22,7 +22,7 @@
       "@styles/*": ["src/webview/styles/*"],
       "@types/*": ["src/webview/types/*"]
     },
-    "types": ["jest", "testing-library__jest-dom"]
+    "types": ["jest", "mocha", "node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", ".vscode-test"]
