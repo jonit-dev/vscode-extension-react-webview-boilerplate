@@ -62,6 +62,15 @@ This will:
 - Run Playwright tests against your components
 - Generate a test report
 
+
+### 4. Unit-Testing
+
+You can run unit tests with the following command:
+
+```bash
+yarn test
+```
+
 ### Development Tips
 
 1. **Browser Development (Main Development Flow)**

@@ -1,1 +1,1 @@
-yarn tsc --noEmit && yarn lint && yarn format
+yarn tsc --noEmit && yarn lint && yarn format && yarn test && yarn test:e2e
