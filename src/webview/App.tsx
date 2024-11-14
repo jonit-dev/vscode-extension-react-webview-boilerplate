@@ -17,7 +17,7 @@ import { TextareaDemo } from './components/demos/TextareaDemo';
 import { TabHeader, TabPanel, Tabs } from './components/vscode-elements/Tabs';
 import { useVSCodeElements } from './hooks/useVSCodeElements';
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
   useVSCodeElements();
 
   return (
@@ -103,5 +103,3 @@ const App: React.FC = () => {
     </div>
   );
 };
-
-export default App;

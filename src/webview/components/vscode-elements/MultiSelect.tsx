@@ -53,3 +53,4 @@ export const MultiSelectOption: React.FC<IOptionProps> = ({
     </vscode-option>
   );
 };
+

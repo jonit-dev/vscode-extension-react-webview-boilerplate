@@ -1,11 +1,13 @@
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
+import importPlugin from "eslint-plugin-import";
 
 export default [{
     files: ["**/*.ts", "**/*.tsx"],
 }, {
     plugins: {
         "@typescript-eslint": typescriptEslint,
+        import: importPlugin,
     },
 
     languageOptions: {
@@ -40,5 +42,6 @@ export default [{
         eqeqeq: "warn",
         "no-throw-literal": "warn",
         semi: "warn",
+        "import/no-default-export": "error",
     },
 }];
