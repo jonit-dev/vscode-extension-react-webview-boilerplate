@@ -1,0 +1,33 @@
+@use 'base';
+
+.vscode-textarea-container {
+  margin-bottom: 20px;
+}
+
+.vscode-textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid base.$border-color;
+  border-radius: 4px;
+  font-family: base.$font-family;
+  font-size: base.$font-size;
+  color: base.$text-color;
+  background-color: base.$background-color;
+  resize: vertical;
+
+  &::placeholder {
+    color: base.$placeholder-color;
+    opacity: 1;
+    /* Firefox */
+  }
+
+  &:focus {
+    outline: none;
+    border-color: base.$focus-border-color;
+    box-shadow: 0 0 3px base.$focus-border-color;
+  }
+
+  &[monospace] {
+    font-family: base.$monospace-font-family;
+  }
+}

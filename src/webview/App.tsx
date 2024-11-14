@@ -13,6 +13,7 @@ import { ScrollableDemo } from './components/demos/ScrollableDemo';
 import { SelectsDemo } from './components/demos/SelectsDemo';
 import { TableDemo } from './components/demos/TableDemo';
 import { TabsDemo } from './components/demos/TabsDemo';
+import { TextareaDemo } from './components/demos/TextareaDemo';
 import { TabHeader, TabPanel, Tabs } from './components/vscode-elements/Tabs';
 import { useVSCodeElements } from './hooks/useVSCodeElements';
 
@@ -92,6 +93,11 @@ const App: React.FC = () => {
         <TabHeader>Table</TabHeader>
         <TabPanel>
           <TableDemo />
+        </TabPanel>
+
+        <TabHeader>Textarea</TabHeader>
+        <TabPanel>
+          <TextareaDemo />
         </TabPanel>
       </Tabs>
     </div>

@@ -65,7 +65,9 @@ export const useVSCodeElements = () => {
         await import('@vscode-elements/elements/dist/vscode-table-row');
         await import('@vscode-elements/elements/dist/vscode-table-cell');
         await import('@vscode-elements/elements/dist/vscode-table-body');
-        
+      }
+      if (!customElements.get('vscode-textarea')) {
+        await import('@vscode-elements/elements/dist/vscode-textarea');
       }
     };
 

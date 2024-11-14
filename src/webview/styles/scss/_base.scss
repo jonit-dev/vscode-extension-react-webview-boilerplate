@@ -3,6 +3,8 @@
   --vscode-foreground: #ffffff;
   --vscode-disabledForeground: #848484;
   --vscode-editor-background: #1e1e1e;
+  --vscode-border-color: #333333;
+  /* Added border color */
 
   /* Font styles */
   --vscode-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -22,3 +24,13 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Added SCSS variables */
+$border-color: var(--vscode-border-color);
+$focus-border-color: var(--vscode-focusBorder);
+$font-family: var(--vscode-font-family);
+$font-size: var(--vscode-font-size);
+$text-color: var(--vscode-foreground);
+$background-color: var(--vscode-editor-background);
+$placeholder-color: var(--vscode-disabledForeground);
+$monospace-font-family: 'Courier New', Courier, monospace;

@@ -58,6 +58,7 @@ declare global {
       'vscode-tab-header': any;
       'vscode-tab-panel': any;
       'vscode-textfield': any;
+      'vscode-textarea': any;
     }
   }
 }
