@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   name: string;
@@ -15,10 +15,10 @@ export const Icon: React.FC<IIconProps> = ({
   return (
     <span
       {...props}
-      className={`codicon codicon-${name} ${className || ''}`}
+      className={`codicon codicon-${name} ${className || ""}`}
       style={{
         fontSize: size ? `${size}px` : undefined,
-        ...style
+        ...style,
       }}
     />
   );

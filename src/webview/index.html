@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VSCode Webview</title>
-    <link rel="stylesheet" href="/styles/external/codicon.css">
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/external/codicon.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
     <style>
       vscode-button:not(:defined) {
         display: inline-block;
@@ -16,9 +16,9 @@
     </style>
     <script>
       // Live reload for development
-      if (window.location.hostname === 'localhost') {
-        const eventSource = new EventSource('/esbuild');
-        eventSource.addEventListener('change', () => location.reload());
+      if (window.location.hostname === "localhost") {
+        const eventSource = new EventSource("/esbuild");
+        eventSource.addEventListener("change", () => location.reload());
       }
     </script>
   </head>

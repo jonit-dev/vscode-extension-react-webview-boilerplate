@@ -1,6 +1,6 @@
-import React from 'react';
-import { Badge } from '../vscode-elements/Badge';
-import { TabHeader, TabPanel, Tabs } from '../vscode-elements/Tabs';
+import React from "react";
+import { Badge } from "../vscode-elements/Badge";
+import { TabHeader, TabPanel, Tabs } from "../vscode-elements/Tabs";
 
 export const TabsDemo: React.FC = () => {
   return (
@@ -14,7 +14,9 @@ export const TabsDemo: React.FC = () => {
 
         <TabHeader>
           Ipsum
-          <Badge variant="counter" slot="content-after">2</Badge>
+          <Badge variant="counter" slot="content-after">
+            2
+          </Badge>
         </TabHeader>
         <TabPanel>
           <p>Aliquam malesuada rhoncus nulla...</p>
@@ -45,22 +47,22 @@ export const TabsDemo: React.FC = () => {
 
         <TabHeader>
           Output
-          <Badge variant="counter" slot="content-after">2</Badge>
+          <Badge variant="counter" slot="content-after">
+            2
+          </Badge>
         </TabHeader>
         <TabPanel>
           <vscode-scrollable>
             <pre>
-              2022-11-06 11:17:37.568 [info] Validating found git in: C:\Program Files\Git\cmd\git.exe
-              ...
+              2022-11-06 11:17:37.568 [info] Validating found git in: C:\Program
+              Files\Git\cmd\git.exe ...
             </pre>
           </vscode-scrollable>
         </TabPanel>
 
         <TabHeader>Terminal</TabHeader>
         <TabPanel>
-          <pre>
-            Web Dev Server started...
-          </pre>
+          <pre>Web Dev Server started...</pre>
         </TabPanel>
       </Tabs>
     </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IOptionProps {
   children: React.ReactNode;
@@ -32,7 +32,7 @@ interface ISingleSelectProps {
   value?: string;
   disabled?: boolean;
   combobox?: boolean;
-  filter?: 'contains' | 'fuzzy' | 'startsWith' | 'startsWithPerTerm';
+  filter?: "contains" | "fuzzy" | "startsWith" | "startsWithPerTerm";
   onChange?: (value: string) => void;
 }
 
@@ -47,7 +47,7 @@ export const SingleSelect: React.FC<ISingleSelectProps> = ({
   value,
   disabled,
   combobox,
-  filter = 'fuzzy',
+  filter = "fuzzy",
   onChange,
   ...props
 }) => {

@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { FormGroup } from '../vscode-elements/FormGroup';
-import { FormHelper } from '../vscode-elements/FormHelper';
-import { Label } from '../vscode-elements/Label';
-import { Radio, RadioGroup } from '../vscode-elements/Radio';
+import React, { useState } from "react";
+import { FormGroup } from "../vscode-elements/FormGroup";
+import { FormHelper } from "../vscode-elements/FormHelper";
+import { Label } from "../vscode-elements/Label";
+import { Radio, RadioGroup } from "../vscode-elements/Radio";
 
 export const RadioDemo: React.FC = () => {
-  const [selectedTheme, setSelectedTheme] = useState('dark');
-  const [selectedSize, setSelectedSize] = useState('medium');
-  const [selectedOption, setSelectedOption] = useState('1');
+  const [selectedTheme, setSelectedTheme] = useState("dark");
+  const [selectedSize, setSelectedSize] = useState("medium");
+  const [selectedOption, setSelectedOption] = useState("1");
 
   return (
     <div>
@@ -15,11 +15,7 @@ export const RadioDemo: React.FC = () => {
 
       <FormGroup>
         <Label>Basic Radio</Label>
-        <Radio
-          label="Single radio button"
-          value="single"
-          checked
-        />
+        <Radio label="Single radio button" value="single" checked />
         <FormHelper>Basic radio button example</FormHelper>
       </FormGroup>
 

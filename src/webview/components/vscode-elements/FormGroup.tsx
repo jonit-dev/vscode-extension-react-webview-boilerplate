@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-type FormGroupVariant = 'horizontal' | 'vertical' | 'settings-group';
+type FormGroupVariant = "horizontal" | "vertical" | "settings-group";
 
 interface IFormGroupProps {
   children: React.ReactNode;
@@ -9,14 +9,11 @@ interface IFormGroupProps {
 
 export const FormGroup: React.FC<IFormGroupProps> = ({
   children,
-  variant = 'horizontal',
+  variant = "horizontal",
   ...props
 }) => {
   return (
-    <vscode-form-group
-      {...props}
-      variant={variant}
-    >
+    <vscode-form-group {...props} variant={variant}>
       {children}
     </vscode-form-group>
   );

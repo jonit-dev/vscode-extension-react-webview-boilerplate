@@ -1,39 +1,39 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Attempting to activate extension...');
-  console.log('Extension URI:', context.extensionUri.toString());
+  console.log("Attempting to activate extension...");
+  console.log("Extension URI:", context.extensionUri.toString());
 
   // Register Webview View Provider
   const provider = new ReactWebviewViewProvider(context.extensionUri);
-  console.log('Created WebviewViewProvider');
+  console.log("Created WebviewViewProvider");
 
   try {
     context.subscriptions.push(
-      vscode.window.registerWebviewViewProvider('react-webview.view', provider)
+      vscode.window.registerWebviewViewProvider("react-webview.view", provider),
     );
-    console.log('Successfully registered WebviewViewProvider');
+    console.log("Successfully registered WebviewViewProvider");
   } catch (error) {
-    console.error('Failed to register WebviewViewProvider:', error);
+    console.error("Failed to register WebviewViewProvider:", error);
   }
 
   // Register Command
   try {
     let disposable = vscode.commands.registerCommand(
-      'vscode-extension-react-webview.openWebview',
+      "vscode-extension-react-webview.openWebview",
       () => {
-        console.log('Executing openWebview command');
+        console.log("Executing openWebview command");
         ReactPanel.createOrShow(context.extensionUri);
-      }
+      },
     );
     context.subscriptions.push(disposable);
-    console.log('Successfully registered openWebview command');
+    console.log("Successfully registered openWebview command");
   } catch (error) {
-    console.error('Failed to register command:', error);
+    console.error("Failed to register command:", error);
   }
 
   console.log(
-    'Extension "vscode-extension-react-webview" activation complete!'
+    'Extension "vscode-extension-react-webview" activation complete!',
   );
 }
 
@@ -43,36 +43,49 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
   public resolveWebviewView(
     webviewView: vscode.WebviewView,
     _context: vscode.WebviewViewResolveContext,
-    _token: vscode.CancellationToken
+    _token: vscode.CancellationToken,
   ) {
-    console.log('Resolving WebviewView');
+    console.log("Resolving WebviewView");
     webviewView.webview.options = {
       enableScripts: true,
       localResourceRoots: [
-        vscode.Uri.joinPath(this._extensionUri, 'dist'),
-        vscode.Uri.joinPath(this._extensionUri, 'node_modules'),
+        vscode.Uri.joinPath(this._extensionUri, "dist"),
+        vscode.Uri.joinPath(this._extensionUri, "node_modules"),
       ],
     };
 
     webviewView.webview.html = this._getHtmlForWebview(webviewView.webview);
-    console.log('WebviewView resolved');
+    console.log("WebviewView resolved");
   }
 
   private _getHtmlForWebview(webview: vscode.Webview) {
     const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
+      vscode.Uri.joinPath(this._extensionUri, "dist", "webview.js"),
     );
 
     const stylesUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'dist', 'styles', 'main.css')
+      vscode.Uri.joinPath(this._extensionUri, "dist", "styles", "main.css"),
     );
 
     const codiconUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'dist', 'styles', 'external', 'codicon.css')
+      vscode.Uri.joinPath(
+        this._extensionUri,
+        "dist",
+        "styles",
+        "external",
+        "codicon.css",
+      ),
     );
 
     const vscodeElementsUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'node_modules', '@vscode-elements', 'elements', 'dist', 'bundled.js')
+      vscode.Uri.joinPath(
+        this._extensionUri,
+        "node_modules",
+        "@vscode-elements",
+        "elements",
+        "dist",
+        "bundled.js",
+      ),
     );
 
     return `<!DOCTYPE html>
@@ -95,7 +108,7 @@ class ReactWebviewViewProvider implements vscode.WebviewViewProvider {
 
 class ReactPanel {
   public static currentPanel: ReactPanel | undefined;
-  private static readonly viewType = 'reactWebview';
+  private static readonly viewType = "reactWebview";
   private readonly _panel: vscode.WebviewPanel;
   private readonly _extensionUri: vscode.Uri;
   private _disposables: vscode.Disposable[] = [];
@@ -115,24 +128,24 @@ class ReactPanel {
         }
       },
       null,
-      this._disposables
+      this._disposables,
     );
 
     this._panel.webview.onDidReceiveMessage(
-      (message) => {
+      message => {
         switch (message.command) {
-          case 'alert':
+          case "alert":
             vscode.window.showInformationMessage(message.text);
             return;
         }
       },
       null,
-      this._disposables
+      this._disposables,
     );
   }
 
   public static createOrShow(extensionUri: vscode.Uri) {
-    console.log('Creating or showing ReactPanel');
+    console.log("Creating or showing ReactPanel");
     const column = vscode.window.activeTextEditor
       ? vscode.window.activeTextEditor.viewColumn
       : undefined;
@@ -144,42 +157,55 @@ class ReactPanel {
 
     const panel = vscode.window.createWebviewPanel(
       ReactPanel.viewType,
-      'React Webview',
+      "React Webview",
       column || vscode.ViewColumn.One,
       {
         enableScripts: true,
         localResourceRoots: [
-          vscode.Uri.joinPath(extensionUri, 'dist'),
-          vscode.Uri.joinPath(extensionUri, 'node_modules'),
+          vscode.Uri.joinPath(extensionUri, "dist"),
+          vscode.Uri.joinPath(extensionUri, "node_modules"),
         ],
-      }
+      },
     );
 
     ReactPanel.currentPanel = new ReactPanel(panel, extensionUri);
-    console.log('ReactPanel created');
+    console.log("ReactPanel created");
   }
 
   private _update() {
     const webview = this._panel.webview;
-    this._panel.title = 'React Webview';
+    this._panel.title = "React Webview";
     this._panel.webview.html = this._getHtmlForWebview(webview);
   }
 
   private _getHtmlForWebview(webview: vscode.Webview) {
     const scriptUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'dist', 'webview.js')
+      vscode.Uri.joinPath(this._extensionUri, "dist", "webview.js"),
     );
 
     const stylesUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'dist', 'styles', 'main.css')
+      vscode.Uri.joinPath(this._extensionUri, "dist", "styles", "main.css"),
     );
 
     const codiconUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'dist', 'styles', 'external', 'codicon.css')
+      vscode.Uri.joinPath(
+        this._extensionUri,
+        "dist",
+        "styles",
+        "external",
+        "codicon.css",
+      ),
     );
 
     const vscodeElementsUri = webview.asWebviewUri(
-      vscode.Uri.joinPath(this._extensionUri, 'node_modules', '@vscode-elements', 'elements', 'dist', 'bundled.js')
+      vscode.Uri.joinPath(
+        this._extensionUri,
+        "node_modules",
+        "@vscode-elements",
+        "elements",
+        "dist",
+        "bundled.js",
+      ),
     );
 
     return `<!DOCTYPE html>

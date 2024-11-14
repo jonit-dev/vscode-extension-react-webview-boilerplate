@@ -1,5 +1,12 @@
-import React from 'react';
-import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from '../vscode-elements/Table';
+import React from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableRow,
+} from "../vscode-elements/Table";
 
 const TableDemo: React.FC = () => {
   return (

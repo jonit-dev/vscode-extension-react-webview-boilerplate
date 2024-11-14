@@ -66,7 +66,8 @@
     "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
     "check-types": "tsc --noEmit",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "format": "prettier --write . --loglevel silent"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.9",
@@ -83,6 +84,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.2",
     "npm-run-all": "^4.1.5",
+    "prettier": "^3.3.3",
     "sass": "^1.80.7",
     "typescript": "^5.6.3"
   },

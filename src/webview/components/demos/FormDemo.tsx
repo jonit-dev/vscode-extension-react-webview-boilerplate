@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { FormContainer } from '../vscode-elements/FormContainer';
-import { FormGroup } from '../vscode-elements/FormGroup';
-import { FormHelper } from '../vscode-elements/FormHelper';
-import { Label } from '../vscode-elements/Label';
+import React, { useState } from "react";
+import { FormContainer } from "../vscode-elements/FormContainer";
+import { FormGroup } from "../vscode-elements/FormGroup";
+import { FormHelper } from "../vscode-elements/FormHelper";
+import { Label } from "../vscode-elements/Label";
 
 export const FormDemo: React.FC = () => {
-  const [textValue, setTextValue] = useState('');
+  const [textValue, setTextValue] = useState("");
 
   return (
     <div>
@@ -19,7 +19,9 @@ export const FormDemo: React.FC = () => {
           onInput={(e: any) => setTextValue(e.target.value)}
           placeholder="Enter text..."
         />
-        <FormHelper>This is a basic form group with horizontal layout</FormHelper>
+        <FormHelper>
+          This is a basic form group with horizontal layout
+        </FormHelper>
       </FormGroup>
 
       <h3>Vertical Layout</h3>
@@ -37,7 +39,8 @@ export const FormDemo: React.FC = () => {
             <p>
               Example code: <code>const value = "example";</code>
               <br />
-              With <span className="error">error</span> and <a href="#">link</a> styling
+              With <span className="error">error</span> and <a href="#">link</a>{" "}
+              styling
             </p>
           </FormHelper>
           <vscode-textfield placeholder="Settings group example" />
@@ -45,7 +48,7 @@ export const FormDemo: React.FC = () => {
       </FormContainer>
 
       <h2>Form Helpers</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
         <FormHelper>Default helper text</FormHelper>
         <FormHelper severity="info">Info message</FormHelper>
         <FormHelper severity="warning">Warning message</FormHelper>

@@ -1,14 +1,14 @@
-import React from 'react';
-import { Icon } from '../vscode-elements/Icon';
+import React from "react";
+import { Icon } from "../vscode-elements/Icon";
 
 export const IconDemo: React.FC = () => {
   return (
     <div className="demo-container">
       <h2>Icons</h2>
-      <div className="demo-grid" style={{ gap: '20px' }}>
+      <div className="demo-grid" style={{ gap: "20px" }}>
         <div>
           <h3>Default Size</h3>
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
             <Icon name="account" />
             <Icon name="add" />
             <Icon name="archive" />
@@ -18,7 +18,7 @@ export const IconDemo: React.FC = () => {
         </div>
         <div>
           <h3>Size 32px</h3>
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
             <Icon name="account" size={32} />
             <Icon name="add" size={32} />
             <Icon name="archive" size={32} />
@@ -28,7 +28,7 @@ export const IconDemo: React.FC = () => {
         </div>
         <div>
           <h3>Size 48px</h3>
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
             <Icon name="account" size={48} />
             <Icon name="add" size={48} />
             <Icon name="archive" size={48} />
@@ -38,7 +38,7 @@ export const IconDemo: React.FC = () => {
         </div>
         <div>
           <h3>Common VSCode Icons</h3>
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
             <Icon name="folder" />
             <Icon name="file" />
             <Icon name="search" />

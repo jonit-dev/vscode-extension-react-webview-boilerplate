@@ -32,6 +32,7 @@ yarn dev
 ```
 
 This will:
+
 - Start a development server at http://localhost:3000
 - Enable hot reload for React components
 - Serve the webview content from the unified `dist` directory
@@ -42,6 +43,7 @@ Make changes to your React components in `src/webview` and see them instantly in
 ### 2. VSCode Extension Testing
 
 Press `F5` in VSCode to:
+
 - Clean the dist directory
 - Build both extension and webview
 - Launch a new VSCode instance with your extension
@@ -51,6 +53,7 @@ Use this to test the full integration of your UI with the extension.
 ### Development Tips
 
 1. **Browser Development (Main Development Flow)**
+
    - Run `yarn dev`
    - Open http://localhost:3000 in your browser
    - Edit React components in `src/webview`
@@ -71,7 +74,7 @@ Use this to test the full integration of your UI with the extension.
 .
 ├── src/
 │   ├── extension.ts        # VSCode extension entry point
-│   └── webview/           
+│   └── webview/
 │       ├── App.tsx        # React application
 │       ├── main.tsx       # React entry point
 │       └── index.html     # Webview HTML template
@@ -93,11 +96,13 @@ Use this to test the full integration of your UI with the extension.
 ## 💡 Best Practices
 
 1. **Development Flow**
+
    - Use browser development for UI work
    - Test in VSCode when integrating with extension features
    - Keep the webview logic separate from VSCode-specific code
 
 2. **Code Organization**
+
    - Keep React components in `src/webview`
    - Place VSCode extension logic in `src/extension.ts`
    - Use TypeScript for better type safety
@@ -116,11 +121,13 @@ Use this to test the full integration of your UI with the extension.
 ## 🚧 Troubleshooting
 
 1. **Hot Reload Not Working**
+
    - Ensure you're running `yarn dev`
    - Check browser console for errors
    - Verify you're using http://localhost:3000
 
 2. **VSCode Extension Not Updating**
+
    - Press F5 to rebuild and reload
    - Check VSCode's Developer Tools for errors
    - Ensure dist directory is clean (`yarn clean`)
@@ -133,15 +140,18 @@ Use this to test the full integration of your UI with the extension.
 ## 📦 Building for Production
 
 1. Build the extension:
+
 ```bash
 yarn build
 ```
 
 2. Test the production build:
+
 - Press F5 in VSCode to launch with production build
 - Verify all features work as expected
 
 3. Package for distribution:
+
 ```bash
 yarn package
 ```

@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-type Severity = 'error' | 'warning' | 'info';
+type Severity = "error" | "warning" | "info";
 
 interface IFormHelperProps {
   children: React.ReactNode;
@@ -13,10 +13,7 @@ export const FormHelper: React.FC<IFormHelperProps> = ({
   ...props
 }) => {
   return (
-    <vscode-form-helper
-      {...props}
-      severity={severity}
-    >
+    <vscode-form-helper {...props} severity={severity}>
       {children}
     </vscode-form-helper>
   );

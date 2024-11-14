@@ -56,7 +56,6 @@ $table-foreground: var(--vscode-foreground);
   }
 
   &.bordered-columns {
-
     th,
     td {
       border-right: 1px solid $table-border;
@@ -79,7 +78,7 @@ $table-foreground: var(--vscode-foreground);
       cursor: col-resize;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         right: 0;
         top: 0;

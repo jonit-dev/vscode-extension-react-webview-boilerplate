@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 
 interface ITableProps {
   zebra?: boolean;
@@ -13,25 +12,42 @@ interface ITableProps {
   children: React.ReactNode;
 }
 
-const Table: React.FC<ITableProps> = ({ zebra, borderedRows, borderedColumns, responsive, breakpoint, resizable, delayedResizing, className, children }) => {
+const Table: React.FC<ITableProps> = ({
+  zebra,
+  borderedRows,
+  borderedColumns,
+  responsive,
+  breakpoint,
+  resizable,
+  delayedResizing,
+  className,
+  children,
+}) => {
   const tableClasses = [
-    'vscode-table',
-    zebra ? 'zebra' : '',
-    borderedRows ? 'bordered-rows' : '',
-    borderedColumns ? 'bordered-columns' : '',
-    responsive ? 'responsive' : '',
-    resizable ? 'resizable' : '',
-    delayedResizing ? 'delayed-resizing' : '',
-    className || ''
-  ].join(' ');
+    "vscode-table",
+    zebra ? "zebra" : "",
+    borderedRows ? "bordered-rows" : "",
+    borderedColumns ? "bordered-columns" : "",
+    responsive ? "responsive" : "",
+    resizable ? "resizable" : "",
+    delayedResizing ? "delayed-resizing" : "",
+    className || "",
+  ].join(" ");
 
-  return <table className={tableClasses} style={responsive ? { maxWidth: breakpoint } : {}}>{children}</table>;
+  return (
+    <table
+      className={tableClasses}
+      style={responsive ? { maxWidth: breakpoint } : {}}
+    >
+      {children}
+    </table>
+  );
 };
 
 export { Table };
 
 interface ITableHeaderProps {
-  slot: 'header';
+  slot: "header";
   children: React.ReactNode;
 }
 
@@ -52,7 +68,7 @@ const TableHeaderCell: React.FC<ITableHeaderCellProps> = ({ children }) => {
 export { TableHeaderCell };
 
 interface ITableBodyProps {
-  slot: 'body';
+  slot: "body";
   children: React.ReactNode;
 }
 

@@ -42,7 +42,7 @@ vscode-form-group {
     align-items: center;
     gap: 16px;
 
-    >vscode-label {
+    > vscode-label {
       flex: 0 0 var(--label-width);
       margin-right: var(--label-right-margin);
     }
@@ -57,13 +57,13 @@ vscode-form-group {
     flex-direction: column;
     gap: 4px;
 
-    >vscode-form-helper {
+    > vscode-form-helper {
       order: 2;
       margin-top: 0;
       margin-bottom: 8px;
     }
 
-    >*:last-child {
+    > *:last-child {
       order: 3;
     }
   }

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 interface IBadgeProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: 'counter' | 'activity-bar-counter';
+  variant?: "counter" | "activity-bar-counter";
 }
 
 export const Badge: React.FC<IBadgeProps> = ({
@@ -10,10 +10,7 @@ export const Badge: React.FC<IBadgeProps> = ({
   ...props
 }) => {
   return (
-    <vscode-badge
-      {...props}
-      variant={variant}
-    >
+    <vscode-badge {...props} variant={variant}>
       {children}
     </vscode-badge>
   );

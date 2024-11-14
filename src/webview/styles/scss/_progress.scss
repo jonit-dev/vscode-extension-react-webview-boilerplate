@@ -15,7 +15,7 @@ vscode-progress-ring {
   height: var(--size, 16px);
 
   &::before {
-    content: '';
+    content: "";
     box-sizing: border-box;
     position: absolute;
     width: 100%;
@@ -25,7 +25,7 @@ vscode-progress-ring {
   }
 
   &::after {
-    content: '';
+    content: "";
     box-sizing: border-box;
     position: absolute;
     width: 100%;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IMultiSelectProps {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ export const MultiSelect: React.FC<IMultiSelectProps> = ({
       disabled={disabled}
       placeholder={placeholder}
       onChange={(event: CustomEvent) => {
-        const selectedValues = event.detail.value.split(',').filter(Boolean);
+        const selectedValues = event.detail.value.split(",").filter(Boolean);
         onChange?.(selectedValues);
       }}
     >
@@ -44,13 +44,8 @@ export const MultiSelectOption: React.FC<IOptionProps> = ({
   ...props
 }) => {
   return (
-    <vscode-option
-      {...props}
-      value={value}
-      disabled={disabled}
-    >
+    <vscode-option {...props} value={value} disabled={disabled}>
       {children}
     </vscode-option>
   );
 };
-

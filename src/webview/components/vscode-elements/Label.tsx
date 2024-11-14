@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   required?: boolean;
@@ -12,11 +12,7 @@ export const Label: React.FC<ILabelProps> = ({
   ...props
 }) => {
   return (
-    <vscode-label
-      {...props}
-      required={required}
-      disabled={disabled}
-    >
+    <vscode-label {...props} required={required} disabled={disabled}>
       {children}
       {required && <span className="required-indicator">*</span>}
     </vscode-label>

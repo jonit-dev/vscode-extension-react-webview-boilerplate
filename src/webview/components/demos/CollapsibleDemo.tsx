@@ -1,11 +1,11 @@
-import React from 'react';
-import { Collapsible } from '../vscode-elements/Collapsible';
+import React from "react";
+import { Collapsible } from "../vscode-elements/Collapsible";
 
 export const CollapsibleDemo: React.FC = () => {
   return (
     <div>
       <h2>Collapsibles</h2>
-      <div style={{ display: 'flex', gap: '10px', flexDirection: 'column' }}>
+      <div style={{ display: "flex", gap: "10px", flexDirection: "column" }}>
         <Collapsible title="Basic example" open>
           <p>Open by default</p>
         </Collapsible>
@@ -29,7 +29,9 @@ export const CollapsibleDemo: React.FC = () => {
         </Collapsible>
 
         <Collapsible title="With decorations">
-          <vscode-badge variant="counter" slot="decorations">99</vscode-badge>
+          <vscode-badge variant="counter" slot="decorations">
+            99
+          </vscode-badge>
           <p>Example with badge decoration</p>
         </Collapsible>
       </div>

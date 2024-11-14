@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface ICollapsibleProps extends React.HTMLAttributes<HTMLElement> {
   title: string;

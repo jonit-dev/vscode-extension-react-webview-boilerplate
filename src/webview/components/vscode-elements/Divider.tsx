@@ -1,17 +1,12 @@
-import React from 'react';
+import React from "react";
 
 interface IDividerProps {
-  orientation?: 'horizontal' | 'vertical';
+  orientation?: "horizontal" | "vertical";
 }
 
 export const Divider: React.FC<IDividerProps> = ({
-  orientation = 'horizontal',
+  orientation = "horizontal",
   ...props
 }) => {
-  return (
-    <vscode-divider
-      {...props}
-      orientation={orientation}
-    />
-  );
+  return <vscode-divider {...props} orientation={orientation} />;
 };

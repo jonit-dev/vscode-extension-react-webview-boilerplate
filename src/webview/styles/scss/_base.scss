@@ -7,7 +7,8 @@
   /* Added border color */
 
   /* Font styles */
-  --vscode-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --vscode-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
   --vscode-font-weight: normal;
   --vscode-font-size: 13px;
 
@@ -33,4 +34,4 @@ $font-size: var(--vscode-font-size);
 $text-color: var(--vscode-foreground);
 $background-color: var(--vscode-editor-background);
 $placeholder-color: var(--vscode-disabledForeground);
-$monospace-font-family: 'Courier New', Courier, monospace;
+$monospace-font-family: "Courier New", Courier, monospace;

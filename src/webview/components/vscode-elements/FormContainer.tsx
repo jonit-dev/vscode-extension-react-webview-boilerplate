@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IFormContainerProps {
   children: React.ReactNode;
@@ -13,11 +13,7 @@ export const FormContainer: React.FC<IFormContainerProps> = ({
   ...props
 }) => {
   return (
-    <vscode-form-container
-      {...props}
-      title={title}
-      description={description}
-    >
+    <vscode-form-container {...props} title={title} description={description}>
       {children}
     </vscode-form-container>
   );

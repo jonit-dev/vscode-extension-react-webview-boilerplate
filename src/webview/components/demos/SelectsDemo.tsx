@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { FormGroup } from '../vscode-elements/FormGroup';
-import { FormHelper } from '../vscode-elements/FormHelper';
-import { Label } from '../vscode-elements/Label';
-import { MultiSelect, MultiSelectOption } from '../vscode-elements/MultiSelect';
-import { Option, SingleSelect } from '../vscode-elements/SingleSelect';
+import React, { useState } from "react";
+import { FormGroup } from "../vscode-elements/FormGroup";
+import { FormHelper } from "../vscode-elements/FormHelper";
+import { Label } from "../vscode-elements/Label";
+import { MultiSelect, MultiSelectOption } from "../vscode-elements/MultiSelect";
+import { Option, SingleSelect } from "../vscode-elements/SingleSelect";
 
 export const SelectsDemo: React.FC = () => {
-  const [basicValue, setBasicValue] = useState('ipsum');
+  const [basicValue, setBasicValue] = useState("ipsum");
   const [selectedFruits, setSelectedFruits] = useState<string[]>([]);
-  const [selectedColors, setSelectedColors] = useState<string[]>(['blue', 'red']);
+  const [selectedColors, setSelectedColors] = useState<string[]>([
+    "blue",
+    "red",
+  ]);
 
   return (
     <div>
@@ -21,22 +24,13 @@ export const SelectsDemo: React.FC = () => {
           value={basicValue}
           onChange={value => setBasicValue(value)}
         >
-          <Option
-            value="lorem"
-            description="Consectetur adipiscing elit"
-          >
+          <Option value="lorem" description="Consectetur adipiscing elit">
             Lorem
           </Option>
-          <Option
-            value="ipsum"
-            description="Donec elit odio"
-          >
+          <Option value="ipsum" description="Donec elit odio">
             Ipsum
           </Option>
-          <Option
-            value="dolor"
-            description="Aliquam ac vulputate eros"
-          >
+          <Option value="dolor" description="Aliquam ac vulputate eros">
             Dolor
           </Option>
         </SingleSelect>
@@ -46,22 +40,13 @@ export const SelectsDemo: React.FC = () => {
       <FormGroup>
         <Label>Disabled Single Select</Label>
         <SingleSelect disabled value="ipsum">
-          <Option
-            value="lorem"
-            description="Consectetur adipiscing elit"
-          >
+          <Option value="lorem" description="Consectetur adipiscing elit">
             Lorem
           </Option>
-          <Option
-            value="ipsum"
-            description="Donec elit odio"
-          >
+          <Option value="ipsum" description="Donec elit odio">
             Ipsum
           </Option>
-          <Option
-            value="dolor"
-            description="Aliquam ac vulputate eros"
-          >
+          <Option value="dolor" description="Aliquam ac vulputate eros">
             Dolor
           </Option>
         </SingleSelect>
@@ -105,7 +90,7 @@ export const SelectsDemo: React.FC = () => {
         <MultiSelect
           disabled
           value={[]}
-          onChange={() => { }}
+          onChange={() => {}}
           placeholder="Disabled multi-select..."
         >
           <MultiSelectOption value="1">Option 1</MultiSelectOption>
@@ -119,13 +104,17 @@ export const SelectsDemo: React.FC = () => {
         <Label>With Disabled Options</Label>
         <MultiSelect
           value={[]}
-          onChange={() => { }}
+          onChange={() => {}}
           placeholder="Select options..."
         >
           <MultiSelectOption value="1">Option 1</MultiSelectOption>
-          <MultiSelectOption value="2" disabled>Option 2 (Disabled)</MultiSelectOption>
+          <MultiSelectOption value="2" disabled>
+            Option 2 (Disabled)
+          </MultiSelectOption>
           <MultiSelectOption value="3">Option 3</MultiSelectOption>
-          <MultiSelectOption value="4" disabled>Option 4 (Disabled)</MultiSelectOption>
+          <MultiSelectOption value="4" disabled>
+            Option 4 (Disabled)
+          </MultiSelectOption>
         </MultiSelect>
         <FormHelper>Some options are disabled</FormHelper>
       </FormGroup>

@@ -1,6 +1,6 @@
-import React from 'react';
-import { FormGroup } from '../vscode-elements/FormGroup';
-import { Label } from '../vscode-elements/Label';
+import React from "react";
+import { FormGroup } from "../vscode-elements/FormGroup";
+import { Label } from "../vscode-elements/Label";
 
 export const LabelDemo: React.FC = () => {
   return (
@@ -23,9 +23,9 @@ export const LabelDemo: React.FC = () => {
       </FormGroup>
 
       <h2>Labels with Different Elements</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         <Label>
-          <span style={{ color: 'var(--vscode-textLink-foreground)' }}>
+          <span style={{ color: "var(--vscode-textLink-foreground)" }}>
             Styled Label
           </span>
         </Label>

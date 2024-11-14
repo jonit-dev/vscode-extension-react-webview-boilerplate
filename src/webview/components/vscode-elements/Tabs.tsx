@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../types/vscode-elements.d.ts';
+import React from "react";
+import "../../types/vscode-elements.d.ts";
 
 interface ITabsProps extends React.HTMLAttributes<HTMLElement> {
   selectedIndex?: number;
@@ -7,10 +7,10 @@ interface ITabsProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 interface ITabHeaderProps extends React.HTMLAttributes<HTMLElement> {
-  slot?: 'header';
+  slot?: "header";
 }
 
-interface ITabPanelProps extends React.HTMLAttributes<HTMLElement> { }
+interface ITabPanelProps extends React.HTMLAttributes<HTMLElement> {}
 
 export const TabHeader: React.FC<ITabHeaderProps> = ({
   children,
@@ -23,15 +23,8 @@ export const TabHeader: React.FC<ITabHeaderProps> = ({
   );
 };
 
-export const TabPanel: React.FC<ITabPanelProps> = ({
-  children,
-  ...props
-}) => {
-  return (
-    <vscode-tab-panel {...props}>
-      {children}
-    </vscode-tab-panel>
-  );
+export const TabPanel: React.FC<ITabPanelProps> = ({ children, ...props }) => {
+  return <vscode-tab-panel {...props}>{children}</vscode-tab-panel>;
 };
 
 export const Tabs: React.FC<ITabsProps> = ({
@@ -42,10 +35,10 @@ export const Tabs: React.FC<ITabsProps> = ({
 }) => {
   const handleTabSelect = (event: CustomEvent) => {
     // Forward the vsc-tabs-select event
-    const customEvent = new CustomEvent('vsc-tabs-select', {
+    const customEvent = new CustomEvent("vsc-tabs-select", {
       detail: event.detail,
       bubbles: true,
-      composed: true
+      composed: true,
     });
     event.target?.dispatchEvent(customEvent);
   };

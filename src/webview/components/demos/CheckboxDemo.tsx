@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Checkbox, CheckboxGroup } from '../vscode-elements/Checkbox';
+import React, { useState } from "react";
+import { Checkbox, CheckboxGroup } from "../vscode-elements/Checkbox";
 
 export const CheckboxDemo: React.FC = () => {
   const [isChecked1, setIsChecked1] = useState(true);
@@ -7,16 +7,9 @@ export const CheckboxDemo: React.FC = () => {
   return (
     <div>
       <h2>Basic Examples</h2>
-      <Checkbox
-        label="Checkbox example"
-        value="testvalue1"
-        checked
-      />
+      <Checkbox label="Checkbox example" value="testvalue1" checked />
 
-      <Checkbox
-        label="Indeterminate example"
-        indeterminate
-      />
+      <Checkbox label="Indeterminate example" indeterminate />
 
       <Checkbox>
         <b>Hello</b> World!
@@ -32,7 +25,7 @@ export const CheckboxDemo: React.FC = () => {
         </CheckboxGroup>
       </div>
 
-      <div style={{ marginTop: '24px' }}>
+      <div style={{ marginTop: "24px" }}>
         <h3>Vertical Group</h3>
         <CheckboxGroup variant="vertical">
           <Checkbox label="Lorem" />

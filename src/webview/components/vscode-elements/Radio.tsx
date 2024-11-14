@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IRadioProps {
   label?: string;
@@ -21,7 +21,7 @@ interface IRadioGroupProps {
   children: React.ReactElement<IRadioProps> | React.ReactElement<IRadioProps>[];
   value?: string;
   disabled?: boolean;
-  variant?: 'vertical' | 'horizontal';
+  variant?: "vertical" | "horizontal";
   onChange?: (value: string) => void;
 }
 
@@ -57,7 +57,7 @@ export const RadioGroup: React.FC<IRadioGroupProps> = ({
   children,
   value,
   disabled,
-  variant = 'vertical',
+  variant = "vertical",
   onChange,
 }) => {
   const handleChange = (event: Event) => {
@@ -67,7 +67,7 @@ export const RadioGroup: React.FC<IRadioGroupProps> = ({
 
   const groupName = React.useId();
 
-  const radioButtons = React.Children.map(children, (child) => {
+  const radioButtons = React.Children.map(children, child => {
     if (React.isValidElement<IRadioProps>(child)) {
       return React.cloneElement(child, {
         ...child.props,

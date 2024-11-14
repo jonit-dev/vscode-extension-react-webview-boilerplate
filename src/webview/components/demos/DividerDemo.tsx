@@ -1,5 +1,5 @@
-import React from 'react';
-import { Divider } from '../vscode-elements/Divider';
+import React from "react";
+import { Divider } from "../vscode-elements/Divider";
 
 export const DividerDemo: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ export const DividerDemo: React.FC = () => {
       </div>
 
       <h2>Vertical Divider</h2>
-      <div style={{ display: 'flex', height: '50px', alignItems: 'center' }}>
+      <div style={{ display: "flex", height: "50px", alignItems: "center" }}>
         <span>Left content</span>
         <Divider orientation="vertical" />
         <span>Right content</span>
