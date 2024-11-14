@@ -1,21 +1,21 @@
+import { BadgeDemo } from "@components/demos/BadgeDemo";
+import { ButtonDemo } from "@components/demos/ButtonDemo";
+import { CheckboxDemo } from "@components/demos/CheckboxDemo";
+import { CollapsibleDemo } from "@components/demos/CollapsibleDemo";
+import { DividerDemo } from "@components/demos/DividerDemo";
+import { FormDemo } from "@components/demos/FormDemo";
+import { IconDemo } from "@components/demos/IconDemo";
+import { LabelDemo } from "@components/demos/LabelDemo";
+import { ProgressRingDemo } from "@components/demos/ProgressRingDemo";
+import { RadioDemo } from "@components/demos/RadioDemo";
+import { ScrollableDemo } from "@components/demos/ScrollableDemo";
+import { SelectsDemo } from "@components/demos/SelectsDemo";
+import { TableDemo } from "@components/demos/TableDemo";
+import { TabsDemo } from "@components/demos/TabsDemo";
+import { TextareaDemo } from "@components/demos/TextareaDemo";
+import { TabHeader, TabPanel, Tabs } from "@components/vscode-elements/Tabs";
+import { useVSCodeElements } from "@hooks/useVSCodeElements";
 import React from "react";
-import { BadgeDemo } from "./components/demos/BadgeDemo";
-import { ButtonDemo } from "./components/demos/ButtonDemo";
-import { CheckboxDemo } from "./components/demos/CheckboxDemo";
-import { CollapsibleDemo } from "./components/demos/CollapsibleDemo";
-import { DividerDemo } from "./components/demos/DividerDemo";
-import { FormDemo } from "./components/demos/FormDemo";
-import { IconDemo } from "./components/demos/IconDemo";
-import { LabelDemo } from "./components/demos/LabelDemo";
-import { ProgressRingDemo } from "./components/demos/ProgressRingDemo";
-import { RadioDemo } from "./components/demos/RadioDemo";
-import { ScrollableDemo } from "./components/demos/ScrollableDemo";
-import { SelectsDemo } from "./components/demos/SelectsDemo";
-import { TableDemo } from "./components/demos/TableDemo";
-import { TabsDemo } from "./components/demos/TabsDemo";
-import { TextareaDemo } from "./components/demos/TextareaDemo";
-import { TabHeader, TabPanel, Tabs } from "./components/vscode-elements/Tabs";
-import { useVSCodeElements } from "./hooks/useVSCodeElements";
 
 export const App: React.FC = () => {
   useVSCodeElements();

@@ -13,7 +13,15 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/webview/components/*"],
+      "@hooks/*": ["src/webview/hooks/*"],
+      "@services/*": ["src/webview/services/*"],
+      "@styles/*": ["src/webview/styles/*"],
+      "@types/*": ["src/webview/types/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", ".vscode-test"]
